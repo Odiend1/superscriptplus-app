@@ -36,6 +36,8 @@ public class HomeFragment extends Fragment {
 
     private Button lesson1;
     private Button lesson2;
+    private Button lesson3;
+    private Button lesson4;
 
     public static HomeFragment newInstance(String param1, String param2) {
         HomeFragment fragment = new HomeFragment();
@@ -71,11 +73,26 @@ public class HomeFragment extends Fragment {
                 openLesson(2);
             }
         });
+        lesson3 = lessonListLayout.findViewById(R.id.lesson3);
+        lesson3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openLesson(3);
+            }
+        });
+        lesson4 = lessonListLayout.findViewById(R.id.lesson4);
+        lesson4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openLesson(4);
+            }
+        });
 
         return view;
     }
 
     public void openLesson(int lessonNum){
+        System.out.println("Lesson: " + String.valueOf(lessonNum));
         Intent intent = new Intent(getActivity(), LessonActivity.class);
         intent.putExtra("lesson", String.valueOf(lessonNum));
         startActivity(intent);

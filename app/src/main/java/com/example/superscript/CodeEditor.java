@@ -2,7 +2,9 @@ package com.example.superscript;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
@@ -27,6 +29,7 @@ public class CodeEditor extends AppCompatActivity {
     private Button exit;
     private String filename = "new.ssp";
     private Button save;
+    private String lastSaved;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,12 +82,29 @@ public class CodeEditor extends AppCompatActivity {
         String code = codeView.getText().toString();
         SSP ssp = new SSP();
         output.setText("");
-        ssp.execute(ssp.compile(code, output), output);
+        ssp.output = output;
+        ssp.execute(ssp.compile(code));
+    }
+
+    public void goBack(){
+        super.onBackPressed();
     }
 
     public void exitEditor(){
-        super.onBackPressed();
+        if(!lastSaved.equals(codeView.getText().toString())) {
+            new AlertDialog.Builder(this).setIcon(android.R.drawable.ic_dialog_alert)
+                    .setTitle("    Unsaved Changes").setMessage(" Would you like to exit without saving?")
+                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            goBack();
+                        }
+                    }).setNegativeButton("No", null).show();
+        } else{
+            goBack();
+        }
     }
+
 
     public void save(Boolean showSaving){
         String code = codeView.getText().toString();
@@ -93,11 +113,14 @@ public class CodeEditor extends AppCompatActivity {
             fos = openFileOutput(filename, MODE_PRIVATE);
             fos.write(code.getBytes());
             if(showSaving) Toast.makeText(this,"Your code has been saved.", Toast.LENGTH_LONG).show();
+            lastSaved = code;
         }
         catch(FileNotFoundException e){
             e.printStackTrace();
+            if(showSaving) Toast.makeText(this,"An error occurred while saving.", Toast.LENGTH_LONG).show();
         } catch (IOException e) {
             e.printStackTrace();
+            if(showSaving) Toast.makeText(this,"An error occurred while saving.", Toast.LENGTH_LONG).show();
         } finally {
             if(fos != null){
                 try {

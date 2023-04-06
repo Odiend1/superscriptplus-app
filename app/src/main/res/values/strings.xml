@@ -18,18 +18,21 @@
     <string name="x">X</string>
     <string name="next">Next</string>
     <string name="back">Back</string>
+    <string name="new_project">New Project</string>
     <string name="l1_p1_body1">
         Welcome to Superscript+!
         \n\n
         Superscript+ is an app designed to teach fundamental coding concepts using a custom programming language, also called Superscript+. Superscript+ is a dialect (or a modified version of) the Superscript programming language and was created for this app to teach aspiring coders.
     </string>
     <string name="l1_p2_body1">
-        The Superscript+ langauge uses a syntax, or rules that define how code should be written, called parenthesized prefix notation. In parenthesized prefix notation, you enclose a function and its arguments in parentheses. A function is like a command you give, and its arguments are information a function needs to run.
+        The Superscript+ language uses a syntax, or rules that define how code should be written, called parenthesized prefix notation. In parenthesized prefix notation, you enclose a function and its arguments in parentheses. A function is like a command you give, and its arguments are information a function needs to run.
         \n\n
         For example, the code segment below prints "Hello world!" The first word after the parentheses, "prn", is a function that prints its argument, and in this case, the argument is "Hello world!"
         \n\n
     </string>
     <string name="l2_p1_body1">
+        In this lesson, we will learn about Superscript+\'s 3 basic data types.
+        \n\n
         In Superscript+, there are 3 basic data types: strings, numbers, and booleans. A string is a segment of text that contains characters (the letters, numbers, and symbols in text). For example, the text you are reading right now is stored as a string.
         \n\n
         A number is a numerical value. They can include the numbers themselves, decimals, and if they\'re negative, a negative sign.
@@ -47,5 +50,48 @@
     <string name="l2_p2_body3">
         Now, why don\'t you head to the code editor and try the "prn" function for yourself? To go to the code editor, go to the "Projects" screen and select "New Project".
     </string>
-    <string name="new_project">New Project</string>
+    <string name="l3_p1_body1">
+        In this lesson, we will perform arithmetic on number values.
+        \n\n
+        In Superscript+, you can perform arithmetic through using 4 operations: addition, subtraction, multiplication, and division. To add two numbers, you can use the "+" function. This takes an unlimited number of arguments and returns their sum. The function below returns 3.
+    </string>
+    <string name="l3_p1_body2">
+        To subtract numbers, use the "-" function. This also takes as many number as you wish, but the first number is the minuend, the number you are subtracting from, and the other numbers are subtrahend, what you are subtracting the minuend by. The function below returns 1.
+    </string>
+    <string name="l3_p1_body3">
+        Multiplying numbers uses the "*" function and returns their product. The function below returns 12.
+    </string>
+    <string name="l3_p1_body4">
+        To divide numbers, use the "/" function. The first number is th dividend, the number that you are dividing, and the numbers that follow are divisors, numbers that you divide by. The "/" function also throws an error if you attempt to divide by zero, as anything divided by zero is undefined. The function below returns 0.5, or one half.
+    </string>
+    <string name="l3_p2_body1">
+        These arithmetic functions don\'t print their value automatically. Instead, they return their values. Returning a value is when a program produces output that can be used by other parts of a program. In Superscript+, functions can receive those values through nested functions. A nested function is a function that is given as an argument to another function. The code segment below shows a nested function, "(+ 4 1)".
+    </string>
+    <string name="l3_p2_body2">
+        The "prn" function will receive the value from the nested function "(+ 4 1)" and will print the value that was returned to it, 5. Code segments where functions and their arguments can represent hierarchical structures of information are called S-expressions. In fact, all Superscript+ code written in parenthesized prefix notation is an S-expression. These S-expressions allow code to be organized and create a visual representation of the flow of actions.
+    </string>
+    <string name="l4_p1_body1">
+        In this lesson, we will learn how to define and call the value of variables in Superscript+.
+        \n\n
+        When coding, we need ways to store information that can be manipulated later. We can use variables tostore information. Variables are like containers. You can store information inside them and use that information later. Variables are identified using symbols. In coding, symbols are series of characters that are used to identify different variables. Like one might give a name to a pet and call it by that name, you can name a variable with a symbol, and whenever that symbol is typed as an argument, its value will be called and used there.
+        \n\n
+        You can define a variable with the “=” function. Declaring a variable basically tells a program that the given symbol is a variable name, so the program won’t flag it as invalid. When declaring a variable, you can also give it a value. The code segment below defines the variable “magic_number” and gives it the value “42”.
+    </string>
+    <string name="l4_p2_body1">
+        To call a variable, you can simply type out its name. When naming variables, make sure the symbol clearly expresses what the variable is for. The following code prints magic_number, our previous variable.
+    </string>
+    <string name="l4_p2_body2">
+        You can also perform other functions on variables to change their value in that instance. However, if you call it again later, it’ll still have its original value. For example, the first code segment below prints 45, but the next one prints magic_number’s original value of 42.
+    </string>
+    <string name="l4_p2_body3">
+        You can also change the value of variable with the “=” function. From then on, the variable’s value will be different. This code will set magic_number to 43 and print 43.
+    </string>
+    <string name="l4_p2_body4">
+        Now that you can define and call variables, why don’t you try them out in the code editor?
+    </string>
+    <string name="lesson_1_name">Lesson 1 - Intro to Superscript+</string>
+    <string name="lesson_2_name"><![CDATA[Lesson 2 - Data Types & Output]]></string>
+    <string name="lesson_3_name"><![CDATA[Lesson 3 - Arithmetic & Nested Functions]]></string>
+    <string name="lessons">Lessons</string>
+    <string name="lesson_4_name">Lesson 4 - Variables</string>
 </resources>

@@ -17,6 +17,7 @@ public class SSP {
   static HashMap<String, String> vars = new HashMap<String, String>();
   static Set<Character> numeric = Set.of('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.', '-');
   static Set<String> keywords = Set.of("true", "false", "nil");
+  static TextView output;
 
   static class Function {
     String function = "";
@@ -70,7 +71,7 @@ public class SSP {
     return true;
   }
 
-  public static ArrayList<Function> compile(String code, TextView output) {
+  public static ArrayList<Function> compile(String code) {
     // Removes line separator
     code = code.replace(System.lineSeparator(), "");
 
@@ -240,7 +241,7 @@ public class SSP {
     return compiled;
   }
 
-  public static String operate(String operation, ArrayList<String> args, TextView output){
+  public static String operate(String operation, ArrayList<String> args){
     // Final number that will be returned
     float finalNum;
 
@@ -289,7 +290,7 @@ public class SSP {
             : String.valueOf(finalNum));
   }
 
-  public static ArrayList<Function> execute(ArrayList<Function> execs, TextView output){
+  public static ArrayList<Function> execute(ArrayList<Function> execs){
 
     ArrayList<Function> results = new ArrayList<Function>();
     for (int execIndex = 0; execIndex < execs.size(); execIndex++) {
@@ -300,7 +301,7 @@ public class SSP {
         String arg = exec.args.get(i);
         if (((arg.startsWith("(") && arg.endsWith(")")) && ((exec.function.equals("if")) ? i == 0 : true))
             && !exec.function.equals("do") && !exec.function.equals("while") && !exec.function.equals("repeat")) {
-          ArrayList<Function> nestRes = execute(compile(arg, output), output);
+          ArrayList<Function> nestRes = execute(compile(arg));
           if (nestRes.size() > 0)
             exec.args.set(i, nestRes.get(0).result);
         }
@@ -340,28 +341,28 @@ public class SSP {
 
       // + function
       else if (exec.function.equals("+")) {
-        res.result = operate(exec.function, exec.args, output);
+        res.result = operate(exec.function, exec.args);
         if(res.result == null) return new ArrayList<Function>();
         results.add(res);
       }
 
       // - function
       else if (exec.function.equals("-")) {
-          res.result = operate(exec.function, exec.args, output);
+          res.result = operate(exec.function, exec.args);
         if(res.result == null) return new ArrayList<Function>();
           results.add(res);
       }
 
       // * function
       else if (exec.function.equals("*")) {
-        res.result = operate(exec.function, exec.args, output);
+        res.result = operate(exec.function, exec.args);
         if(res.result == null) return new ArrayList<Function>();
         results.add(res);
       }
 
       // / function
       else if (exec.function.equals("/")) {
-        res.result = operate(exec.function, exec.args, output);
+        res.result = operate(exec.function, exec.args);
         if(res.result == null) return new ArrayList<Function>();
         results.add(res);
       }
@@ -409,10 +410,10 @@ public class SSP {
       else if (exec.function.equals("if")) {
         if (exec.args.size() == 2 || exec.args.size() == 3) {
           if (exec.args.get(0).equals("true")) {
-            execute(compile(exec.args.get(1), output), output);
+            execute(compile(exec.args.get(1)));
           } else {
             if (exec.args.size() > 2)
-              execute(compile(exec.args.get(2), output), output);
+              execute(compile(exec.args.get(2)));
           }
         }
       }
@@ -420,9 +421,9 @@ public class SSP {
       // while function
       else if (exec.function.equals("while")) {
         if (exec.args.size() == 2) {
-          while ((!vars.containsKey(exec.args.get(0))) ? execute(compile(exec.args.get(0), output), output).get(0).result.equals("true")
+          while ((!vars.containsKey(exec.args.get(0))) ? execute(compile(exec.args.get(0))).get(0).result.equals("true")
               : vars.get(exec.args.get(0)).equals("true")) {
-            execute(compile(exec.args.get(1), output), output);
+            execute(compile(exec.args.get(1)));
           }
         }
       }
@@ -430,7 +431,7 @@ public class SSP {
       // do function
       else if (exec.function.equals("do")) {
         exec.args.forEach((arg) -> {
-          execute(compile(arg, output), output);
+          execute(compile(arg));
         });
       }
 
@@ -462,39 +463,7 @@ public class SSP {
       else if (exec.function.equals("read")) {
         if (exec.args.size() <= 1) {
           output.setText(output.getText().toString() + ((exec.args.size() == 1) ? exec.args.get(0) : ""));
-
-          AlertDialog.Builder builder = new AlertDialog.Builder(output.getContext());
-          builder.setTitle(((exec.args.size() == 1) ? exec.args.get(0) : ""));
-
-          final EditText inputEditText = new EditText(output.getContext());
-          builder.setView(inputEditText);
-
-          builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-              String input = inputEditText.getText().toString();
-              res.result = input;
-            }
-          });
-
-          builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-              dialog.cancel();
-              res.result = "";
-            }
-          });
-
-          AlertDialog dialog = builder.create();
-          dialog.show();
-
-          while(res.result == null){
-            try {
-              Thread.sleep(Long.parseLong(exec.args.get(0)));
-            } catch (InterruptedException e) {
-              Thread.currentThread().interrupt();
-            }
-          }
+          //EditText read =
           results.add(res);
         } else {
           output.setText(output.getText().toString() + "\n" + "Error: Invalid number of arguments given for function " + exec.function + ".");
@@ -507,7 +476,7 @@ public class SSP {
         if (exec.args.size() == 2) {
           try {
             for (int i = 0; i < Float.parseFloat(exec.args.get(0)); i++) {
-              execute(compile(exec.args.get(1), output), output);
+              execute(compile(exec.args.get(1)));
             }
           } catch (NumberFormatException e) {
             output.setText(output.getText().toString() + "\n" + "Error: Function " + exec.function + " cannot convert type string to number");
@@ -593,8 +562,8 @@ public class SSP {
               j++;
             }
             int rEnd = j;
-            if(operate(String.valueOf(infixChar), new ArrayList<String>(Arrays.asList(num1, num2)), output) == null) return new ArrayList<Function>();
-            ex = ex.substring(0, rStart) + String.valueOf(operate(String.valueOf(infixChar), new ArrayList<String>(Arrays.asList(num1, num2)), output)) + ex.substring(rEnd);
+            if(operate(String.valueOf(infixChar), new ArrayList<String>(Arrays.asList(num1, num2))) == null) return new ArrayList<Function>();
+            ex = ex.substring(0, rStart) + String.valueOf(operate(String.valueOf(infixChar), new ArrayList<String>(Arrays.asList(num1, num2)))) + ex.substring(rEnd);
             i = rStart;
           }
         }
@@ -616,8 +585,8 @@ public class SSP {
               j++;
             }
             int rEnd = j;
-            if(operate(String.valueOf(infixChar), new ArrayList<String>(Arrays.asList(num1, num2)), output) == null) return new ArrayList<Function>();
-            ex = ex.substring(0, rStart) + String.valueOf(operate(String.valueOf(infixChar), new ArrayList<String>(Arrays.asList(num1, num2)), output)) + ex.substring(rEnd);
+            if(operate(String.valueOf(infixChar), new ArrayList<String>(Arrays.asList(num1, num2))) == null) return new ArrayList<Function>();
+            ex = ex.substring(0, rStart) + String.valueOf(operate(String.valueOf(infixChar), new ArrayList<String>(Arrays.asList(num1, num2)))) + ex.substring(rEnd);
             i = rStart;
           }
         }

@@ -1,0 +1,51 @@
+<resources>
+    <string name="app_name">Superscript+</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="starting_code">(prn \"Hello world!\")</string>
+    <string name="run">Run</string>
+    <string name="enter_code_here">Enter code here</string>
+    <string name="title_documentation">Documentation</string>
+    <string name="title_projects">Projects</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="your_path_to_superscript_mastery">Your Path to Superscript+ Mastery</string>
+    <string name="projects">Projects</string>
+    <string name="exit">Exit</string>
+    <string name="save">save</string>
+    <string name="project_list">Project List</string>
+    <string name="x">X</string>
+    <string name="next">Next</string>
+    <string name="back">Back</string>
+    <string name="l1_p1_body1">
+        Welcome to Superscript+!
+        \n\n
+        Superscript+ is an app designed to teach fundamental coding concepts using a custom programming language, also called Superscript+. Superscript+ is a dialect (or a modified version of) the Superscript programming language and was created for this app to teach aspiring coders.
+    </string>
+    <string name="l1_p2_body1">
+        The Superscript+ langauge uses a syntax, or rules that define how code should be written, called parenthesized prefix notation. In parenthesized prefix notation, you enclose a function and its arguments in parentheses. A function is like a command you give, and its arguments are information a function needs to run.
+        \n\n
+        For example, the code segment below prints "Hello world!" The first word after the parentheses, "prn", is a function that prints its argument, and in this case, the argument is "Hello world!"
+        \n\n
+    </string>
+    <string name="l2_p1_body1">
+        In Superscript+, there are 3 basic data types: strings, numbers, and booleans. A string is a segment of text that contains characters (the letters, numbers, and symbols in text). For example, the text you are reading right now is stored as a string.
+        \n\n
+        A number is a numerical value. They can include the numbers themselves, decimals, and if they\'re negative, a negative sign.
+
+        Booleans are values that are either true or false. They are used in logical comparisons. For example, if you asked if "1" and "1" were the same value, that would be true.
+    </string>
+    <string name="l2_p2_body1">
+        Some functions take those data types as arguments. The "prn" function, also known as the "print" function, can take any of those data types and print their value.
+        \n\n
+        This code segment below prints the string "Hello world!" In Superscript+, strings must be enclosed in quotations to signify that they are strings.
+    </string>
+    <string name="l2_p2_body2">
+        Numbers do not need to be enclosed in quotations. In Superscript+, spaces separate functions from arguments and arguments from other arguments. Numbers don\'t have spaces in the middle of them, so they do not need quotes, but strings can have spaces, so they must be enclosed in quotation marks. The code segment below shows a number being printed.
+    </string>
+    <string name="l2_p2_body3">
+        Now, why don\'t you head to the code editor and try the "prn" function for yourself? To go to the code editor, go to the "Projects" screen and select "New Project".
+    </string>
+    <string name="new_project">New Project</string>
+</resources>

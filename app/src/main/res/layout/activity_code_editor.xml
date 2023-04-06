@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CodeEditor"
+    android:background="@color/background_grey" >
+
+    <EditText
+        android:id="@+id/code"
+        android:layout_width="352dp"
+        android:layout_height="220dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="92dp"
+        android:layout_marginEnd="63dp"
+        android:background="#222222"
+        android:ems="10"
+        android:fontFamily="monospace"
+        android:gravity="start|top"
+        android:hint="@string/enter_code_here"
+        android:importantForAutofill="no"
+        android:inputType="textMultiLine"
+        android:text="@string/starting_code"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.541"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/run"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:backgroundTint="@color/lime"
+        android:text="@string/run"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toStartOf="@+id/save"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/exit"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="80dp"
+        android:backgroundTint="@color/red"
+        android:text="@string/exit"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/save"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/save"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:backgroundTint="@color/cyan"
+        android:text="@string/save"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toStartOf="@+id/exit"
+        app:layout_constraintStart_toEndOf="@+id/run"
+        app:layout_constraintTop_toTopOf="parent"
+        android:onClick="save"/>
+
+    <TextView
+        android:id="@+id/output"
+        android:layout_width="357dp"
+        android:layout_height="319dp"
+        android:layout_marginStart="27dp"
+        android:layout_marginTop="364dp"
+        android:layout_marginEnd="27dp"
+        android:background="#222222"
+        android:fontFamily="monospace"
+        android:gravity="start"
+        android:scrollbars="vertical|horizontal"
+        android:text=""
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

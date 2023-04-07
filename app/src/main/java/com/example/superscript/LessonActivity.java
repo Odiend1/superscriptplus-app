@@ -270,6 +270,102 @@ public class LessonActivity extends AppCompatActivity {
                 exitLesson();
             }
         }
+        else if(lessonNum == 5){
+            if(pageNum == 1){
+                TextView body1 = new TextView(this);
+                body1.setText(getString(R.string.l5_p1_body1));
+                layout(body1);
+                lessonLayout.addView(body1);
+
+                TextView code1 = new TextView(this);
+                code1.setText("(is 1 1)");
+                code1.setBackgroundColor(getColor(R.color.background_grey));
+                code1.setTextColor(getColor(R.color.lime));
+                layout(code1);
+                lessonLayout.addView(code1);
+
+                TextView body2 = new TextView(this);
+                body2.setText(getString(R.string.l5_p1_body2));
+                layout(body2);
+                lessonLayout.addView(body2);
+
+                TextView code2 = new TextView(this);
+                code2.setText("(is 1 “Hi!”)");
+                code2.setBackgroundColor(getColor(R.color.background_grey));
+                code2.setTextColor(getColor(R.color.lime));
+                layout(code2);
+                lessonLayout.addView(code2);
+
+                TextView body3 = new TextView(this);
+                body3.setText(getString(R.string.l5_p1_body3));
+                layout(body3);
+                lessonLayout.addView(body3);
+
+                TextView code3 = new TextView(this);
+                code3.setText("(= number 3)\n(if (is number 3) (prn “Equal!”) (prn “Not equal.”))");
+                code3.setBackgroundColor(getColor(R.color.background_grey));
+                code3.setTextColor(getColor(R.color.lime));
+                layout(code3);
+                lessonLayout.addView(code3);
+
+                TextView body4 = new TextView(this);
+                body4.setText(getString(R.string.l5_p1_body4));
+                layout(body4);
+                lessonLayout.addView(body4);
+
+                TextView code4 = new TextView(this);
+                code4.setText("(= frown “:(”)\n(if (is frown “:(“) (prn “Why are you frowning?”))");
+                code4.setBackgroundColor(getColor(R.color.background_grey));
+                code4.setTextColor(getColor(R.color.lime));
+                layout(code4);
+                lessonLayout.addView(code4);
+            }
+            else if(pageNum == 2){
+                TextView body1 = new TextView(this);
+                body1.setText(getString(R.string.l5_p2_body1));
+                layout(body1);
+                lessonLayout.addView(body1);
+
+                TextView code1 = new TextView(this);
+                code1.setText("(= num1 100)\n(= num2 3)\n(if (> num1 num2) (prn “The first number is bigger!”) (prn “The second number is bigger!”))");
+                code1.setBackgroundColor(getColor(R.color.background_grey));
+                code1.setTextColor(getColor(R.color.lime));
+                layout(code1);
+                lessonLayout.addView(code1);
+
+                TextView body2 = new TextView(this);
+                body2.setText(getString(R.string.l5_p2_body2));
+                layout(body2);
+                lessonLayout.addView(body2);
+
+                TextView code2 = new TextView(this);
+                code2.setText("(= num1 100)\n(= num2 3)\n(if (< num1 num2) (prn “The first number is smaller!”) (prn “The second number is smaller!”))");
+                code2.setBackgroundColor(getColor(R.color.background_grey));
+                code2.setTextColor(getColor(R.color.lime));
+                layout(code2);
+                lessonLayout.addView(code2);
+
+                TextView body3 = new TextView(this);
+                body3.setText(getString(R.string.l5_p2_body3));
+                layout(body3);
+                lessonLayout.addView(body3);
+
+                TextView code3 = new TextView(this);
+                code3.setText("(= num1 100)\n(= num2 3)\n(if (< num2 num1) (prn “The first number is smaller!”) (prn “The second number is smaller!”))");
+                code3.setBackgroundColor(getColor(R.color.background_grey));
+                code3.setTextColor(getColor(R.color.lime));
+                layout(code3);
+                lessonLayout.addView(code3);
+
+                TextView body4 = new TextView(this);
+                body4.setText(getString(R.string.l5_p2_body4));
+                layout(body4);
+                lessonLayout.addView(body4);
+            }
+            else{
+                exitLesson();
+            }
+        }
         else{
             exitLesson();
         }

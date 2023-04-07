@@ -89,9 +89,37 @@
     <string name="l4_p2_body4">
         Now that you can define and call variables, why don’t you try them out in the code editor?
     </string>
+    <string name="l5_p1_body1">
+        In this lesson, we will use if statements to test conditions.
+        \n\n
+        In programming, if statements are code that tests if something is true before running a piece of code. They test conditions, statements that evaluate to be either true or false. You can make conditions with a few functions, and one of them is the “is” function. The “is” function takes two arguments and checks if their values are equal. Then, depending on the result, it returns either true or false. The code segment below compares the values 1 and 1.
+    </string>
+    <string name="l5_p1_body2">
+        This would return true. However, if the values were different, like 1 and “Hi!”, it would return false. This code segment below checks if 1 is “Hi!”, and since 1 is not “Hi!”, it returns false.
+    </string>
+    <string name="l5_p1_body3">
+        You can use these conditions in an if statement. In Superscript+, you can create if statements with the “if” function. This function takes a condition as its first argument, and if it is true, it will run the code in its second argument. If it is false, an else statement will occur, and the code in the third argument will be run instead. This code segment below sets the variable “number” to 3 and checks if it is equal to 3. If it is, it will print “Equal!”. If it is not, it will print “Not equal.”.
+    </string>
+    <string name="l5_p1_body4">
+        If you don’t want an else statement, you can simply put nothing as that argument. Now, this function will only print if the condition is true.
+    </string>
+    <string name="l5_p2_body1">
+        You can also compare two values in conditions. The “&gt;” function, or greater than function, and the “&lt;” function, or less than function. With these, you can check if the first given argument is greater than or less than the other argument. These functions can only compare numbers, as text cannot be compared in this way. The following code segment checks if the variable “num1” is larger than “num2”. In this case, this is true, so “The first number is bigger!” will be printed.
+    </string>
+    <string name="l5_p2_body2">
+        This code segment below checks if the variable num1 is smaller than num2. Since it is not smaller, the condition will return false, so “The second number is smaller!” will be printed.
+    </string>
+    <string name="l5_p2_body3">
+        However, if the numbers were switched around in the condition, true will be returned, and “The first number is smaller!” will be printed.
+    </string>
+    <string name="l5_p2_body4">
+        In the next lesson, we will learn more about comparing values and if statements as we go over do statements and logical operators.
+    </string>
     <string name="lesson_1_name">Lesson 1 - Intro to Superscript+</string>
     <string name="lesson_2_name"><![CDATA[Lesson 2 - Data Types & Output]]></string>
     <string name="lesson_3_name"><![CDATA[Lesson 3 - Arithmetic & Nested Functions]]></string>
     <string name="lessons">Lessons</string>
     <string name="lesson_4_name">Lesson 4 - Variables</string>
+    <string name="lesson_5_name"><![CDATA[Lesson 5 - If Statements & Conditions]]></string>
+    <string name="lesson_6_name">Lesson 6 - Do Statements &amp; Logical Operators</string>
 </resources>

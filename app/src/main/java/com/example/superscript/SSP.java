@@ -1,7 +1,11 @@
 package com.example.superscript;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.os.AsyncTask;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -11,6 +15,8 @@ import java.util.ArrayList;
 import java.util.Set;
 import java.util.HashMap;
 import java.util.Arrays;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.Semaphore;
 
 public class SSP {
 
@@ -18,6 +24,7 @@ public class SSP {
   static Set<Character> numeric = Set.of('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.', '-');
   static Set<String> keywords = Set.of("true", "false", "nil");
   static TextView output;
+  static Activity activity;
 
   static class Function {
     String function = "";
@@ -108,7 +115,7 @@ public class SSP {
       // Current character
       char inputChar = code.charAt(i);
 
-      while (!inString && inputChar == ' ' && (code.length() > 1 && i > 0) ? code.charAt(i + 1) == ' ' : false) {
+      while (!inString && inputChar == ' ' && (code.length() > 1 && i > 0 && code.length() > i + 1) ? code.charAt(i + 1) == ' ' : false) {
         i += 1;
         inputChar = ' ';
       }
@@ -463,7 +470,27 @@ public class SSP {
       else if (exec.function.equals("read")) {
         if (exec.args.size() <= 1) {
           output.setText(output.getText().toString() + ((exec.args.size() == 1) ? exec.args.get(0) : ""));
-          //EditText read =
+          activity.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+              AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+              builder.setTitle(((exec.args.size() == 1) ? exec.args.get(0) : ""));
+              EditText inputEditText = new EditText(activity);
+              builder.setView(inputEditText);
+              builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                  res.result = inputEditText.getText().toString();
+                }
+              });
+              builder.setCancelable(false);
+              builder.show();
+            }
+          });
+          while(res.result == null){
+
+          }
+          output.setText(output.getText().toString() + res.result + "\n");
           results.add(res);
         } else {
           output.setText(output.getText().toString() + "\n" + "Error: Invalid number of arguments given for function " + exec.function + ".");
@@ -602,7 +629,7 @@ public class SSP {
         res.result = ex;
         results.add(res);
       }
-      
+
       else {
         output.setText(output.getText().toString() + "\n" + "Error: Undefined function " + exec.function);
         return new ArrayList<Function>();

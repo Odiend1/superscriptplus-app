@@ -83,7 +83,13 @@ public class CodeEditor extends AppCompatActivity {
         SSP ssp = new SSP();
         output.setText("");
         ssp.output = output;
-        ssp.execute(ssp.compile(code));
+        ssp.activity = this;
+        Thread thread = new Thread(new Runnable() {
+            public void run() {
+                ssp.execute(ssp.compile(code));
+            }
+        });
+        thread.start();
     }
 
     public void goBack(){

@@ -73,7 +73,7 @@
     <string name="l4_p1_body1">
         In this lesson, we will learn how to define and call the value of variables in Superscript+.
         \n\n
-        When coding, we need ways to store information that can be manipulated later. We can use variables tostore information. Variables are like containers. You can store information inside them and use that information later. Variables are identified using symbols. In coding, symbols are series of characters that are used to identify different variables. Like one might give a name to a pet and call it by that name, you can name a variable with a symbol, and whenever that symbol is typed as an argument, its value will be called and used there.
+        When coding, we need ways to store information that can be manipulated later. We can use variables to store information. Variables are like containers. You can store information inside them and use that information later. Variables are identified using symbols. In coding, symbols are series of characters that are used to identify different variables. Like one might give a name to a pet and call it by that name, you can name a variable with a symbol, and whenever that symbol is typed as an argument, its value will be called and used there.
         \n\n
         You can define a variable with the “=” function. Declaring a variable basically tells a program that the given symbol is a variable name, so the program won’t flag it as invalid. When declaring a variable, you can also give it a value. The code segment below defines the variable “magic_number” and gives it the value “42”.
     </string>
@@ -112,8 +112,33 @@
     <string name="l5_p2_body3">
         However, if the numbers were switched around in the condition, true will be returned, and “The first number is smaller!” will be printed.
     </string>
-    <string name="l5_p2_body4">
+    <string name="l5_p3_body1">
+        To run more than one function as a result of an if statement, you can use the “do” function. The “do” function takes multiple functions as its arguments and runs those functions. The code below checks if the variable “score” is greater than 100, and if it is, “You win!” and the score is printed.
+    </string>
+    <string name="l5_p3_body2">
+        That code was also indented to make it more readable. The contents of the if and the do were pushed further so they would stand out from the rest of the code. Of course, indentation isn’t necessary, but it’s a good practice when writing code.
+        \n\n
+        To create a condition that tests for something if one condition is false, you can use an else-if statement. In the previous code, an else-if statement checks if the score is below 0, and if it is, “Game over!” is printed.
+    </string>
+    <string name="l5_p3_body3">
+        The code above basically adds an if statement to the first if statement’s else. You can use this to test multiple conditions and do different things for each of them. Here’s another example that also incorporates an else statement.
+    </string>
+    <string name="l5_p3_body4">
         In the next lesson, we will learn more about comparing values and if statements as we go over do statements and logical operators.
+    </string>
+    <string name="l6_p1_body1">
+        In this lesson, we will learn about logical operators.
+        \n\n
+        Logical operators are things that can take in one or more booleans (true or false values) and get another boolean result. One of these logical operators is the “not” operator. The “not” operator takes one boolean and inverts its value. If it was true before, it would become false, and if it was false before, it would become true. You can use the “not” operator through the “not” function in Superscript+. Below is an example of how the not operator would be used in code.
+    </string>
+    <string name="l6_p1_body2">
+        Another logical operator is the “and” operator. The “and” operator can take more than one boolean. All the booleans in the and operator must be true for the and operator to return true. If one of them is false, the operator will return false. The first two examples return true while the second two return false.
+    </string>
+    <string name="l6_p1_body3">
+        The last logical operator with a Superscript+ function is the “or” operator. The “or” operator checks if either of its values are true, and if one is, it returns true. No matter how many values are false, it only one is true, the or operator will return true. The first two examples return true while the second two return false.
+    </string>
+    <string name="l6_p1_body4">
+        Now, why don\’t you try these logical operators in the code editor?
     </string>
     <string name="lesson_1_name">Lesson 1 - Intro to Superscript+</string>
     <string name="lesson_2_name"><![CDATA[Lesson 2 - Data Types & Output]]></string>
@@ -121,5 +146,6 @@
     <string name="lessons">Lessons</string>
     <string name="lesson_4_name">Lesson 4 - Variables</string>
     <string name="lesson_5_name"><![CDATA[Lesson 5 - If Statements & Conditions]]></string>
-    <string name="lesson_6_name">Lesson 6 - Do Statements &amp; Logical Operators</string>
+    <string name="lesson_6_name">Lesson 6 - Logical Operators</string>
+    <string name="lesson_7_name">Lesson 7 - User Input</string>
 </resources>

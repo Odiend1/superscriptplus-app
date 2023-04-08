@@ -357,7 +357,7 @@ public class SSP {
       else if (exec.function.equals("-")) {
           res.result = operate(exec.function, exec.args);
         if(res.result == null) return new ArrayList<Function>();
-          results.add(res);
+        results.add(res);
       }
 
       // * function
@@ -629,7 +629,65 @@ public class SSP {
         res.result = ex;
         results.add(res);
       }
-
+      else if (exec.function.equals("not")){
+        if(exec.args.size() == 1){
+          if(exec.args.get(0).equals("true")){
+            res.result = "false";
+          }
+          else if(exec.args.get(0).equals("false")){
+            res.result = "true";
+          }
+          else{
+            output.setText(output.getText().toString() + "\n" + "Error: Function " + exec.function + " cannot perform logical operation on non-boolean data type.");
+            return new ArrayList<Function>();
+          }
+          results.add(res);
+        }
+        else{
+          output.setText(output.getText().toString() + "\n" + "Error: Invalid number of arguments given for function " + exec.function + ".");
+          return new ArrayList<Function>();
+        }
+      }
+      else if (exec.function.equals("and")){
+        if(exec.args.size() > 1){
+          Boolean result = true;
+          for(Integer i = 0; i < exec.args.size(); i++){
+            if(exec.args.get(i).equals("true") || exec.args.get(i).equals("false")){
+              result = result && Boolean.valueOf(exec.args.get(i));
+            }
+            else{
+              output.setText(output.getText().toString() + "\n" + "Error: Function " + exec.function + " cannot perform logical operation on non-boolean data type.");
+              return new ArrayList<Function>();
+            }
+          }
+          res.result = String.valueOf(result);
+          results.add(res);
+        }
+        else{
+          output.setText(output.getText().toString() + "\n" + "Error: Invalid number of arguments given for function " + exec.function + ".");
+          return new ArrayList<Function>();
+        }
+      }
+      else if(exec.function.equals("or")){
+        if(exec.args.size() > 1){
+          Boolean result = false;
+          for(Integer i = 0; i < exec.args.size(); i++){
+            if(exec.args.get(i).equals("true") || exec.args.get(i).equals("false")){
+              result = result || Boolean.valueOf(exec.args.get(i));
+            }
+            else{
+              output.setText(output.getText().toString() + "\n" + "Error: Function " + exec.function + " cannot perform logical operation on non-boolean data type.");
+              return new ArrayList<Function>();
+            }
+          }
+          res.result = String.valueOf(result);
+          results.add(res);
+        }
+        else{
+          output.setText(output.getText().toString() + "\n" + "Error: Invalid number of arguments given for function " + exec.function + ".");
+          return new ArrayList<Function>();
+        }
+      }
       else {
         output.setText(output.getText().toString() + "\n" + "Error: Undefined function " + exec.function);
         return new ArrayList<Function>();

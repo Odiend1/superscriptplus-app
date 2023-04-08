@@ -91,6 +91,15 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:focusableInTouchMode="false" />
+
+            <Button
+                android:id="@+id/lesson7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/lesson_7_name"
+                android:clickable="true"
+                android:focusable="true"
+                android:focusableInTouchMode="false" />
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -20,7 +20,6 @@ public class LessonActivity extends AppCompatActivity {
 
     private int lessonNum;
     private int pageNum = 1;
-    private int pages;
     private Button next;
     private Button back;
     private Button exit;
@@ -69,8 +68,8 @@ public class LessonActivity extends AppCompatActivity {
     }
 
     public void loadLesson(){
-        lessonView = (ScrollView) findViewById(R.id.lesson_view);
-        lessonLayout = (LinearLayout) findViewById(R.id.lesson_layout);
+        lessonView = findViewById(R.id.lesson_view);
+        lessonLayout = findViewById(R.id.lesson_layout);
         lessonLayout.removeAllViews();
 
         if(lessonNum == 1){
@@ -356,9 +355,93 @@ public class LessonActivity extends AppCompatActivity {
                 code3.setTextColor(getColor(R.color.lime));
                 layout(code3);
                 lessonLayout.addView(code3);
+            }
+            else if(pageNum == 3){
+                TextView body1 = new TextView(this);
+                body1.setText(getString(R.string.l5_p3_body1));
+                layout(body1);
+                lessonLayout.addView(body1);
+
+                TextView code1 = new TextView(this);
+                code1.setText("(= score 0)\n(if (> score 100) \n(do\n\t\t(pr “You win! Score: ”)\n\t\t(prn score)\n\t)\n)\n");
+                code1.setBackgroundColor(getColor(R.color.background_grey));
+                code1.setTextColor(getColor(R.color.lime));
+                layout(code1);
+                lessonLayout.addView(code1);
+
+                TextView body2 = new TextView(this);
+                body2.setText(getString(R.string.l5_p3_body2));
+                layout(body2);
+                lessonLayout.addView(body2);
+
+                TextView code2 = new TextView(this);
+                code2.setText("(= score 0)\n(if (> score 100) \n(do\n\t\t(pr “You win! Score: ”)\n\t\t(prn score)\n\t)\n(if (< score 0) \n(prn “Game over…”)\n)\n)\n");
+                code2.setBackgroundColor(getColor(R.color.background_grey));
+                code2.setTextColor(getColor(R.color.lime));
+                layout(code2);
+                lessonLayout.addView(code2);
+
+                TextView body3 = new TextView(this);
+                body3.setText(getString(R.string.l5_p3_body3));
+                layout(body3);
+                lessonLayout.addView(body3);
+
+                TextView code3 = new TextView(this);
+                code3.setText("(= score 0)\n(if (> score 100) \n(do\n\t\t(pr “You win! Score: ”)\n\t\t(prn score)\n\t)\n(if (< score 0) \n(prn “Game over…”)\n(do (pr “Score: “) (prn score))\n)\n)\n");
+                code3.setBackgroundColor(getColor(R.color.background_grey));
+                code3.setTextColor(getColor(R.color.lime));
+                layout(code3);
+                lessonLayout.addView(code3);
 
                 TextView body4 = new TextView(this);
-                body4.setText(getString(R.string.l5_p2_body4));
+                body4.setText(getString(R.string.l5_p3_body4));
+                layout(body4);
+                lessonLayout.addView(body4);
+            }
+            else{
+                exitLesson();
+            }
+        }
+        else if(lessonNum == 6){
+            if(pageNum == 1){
+                TextView body1 = new TextView(this);
+                body1.setText(getString(R.string.l6_p1_body1));
+                layout(body1);
+                lessonLayout.addView(body1);
+
+                TextView code1 = new TextView(this);
+                code1.setText("(if (not (is 5 7)) (prn “5 is not 7!”))");
+                code1.setBackgroundColor(getColor(R.color.background_grey));
+                code1.setTextColor(getColor(R.color.lime));
+                layout(code1);
+                lessonLayout.addView(code1);
+
+                TextView body2 = new TextView(this);
+                body2.setText(getString(R.string.l6_p1_body2));
+                layout(body2);
+                lessonLayout.addView(body2);
+
+                TextView code2 = new TextView(this);
+                code2.setText("(and (is 5 5) (> 6 3))\n(and (< 3 4) (is (+ 6 3) 9) true)\n\n(and (is 1 1) (is 4 3))\n(and (true true false true))");
+                code2.setBackgroundColor(getColor(R.color.background_grey));
+                code2.setTextColor(getColor(R.color.lime));
+                layout(code2);
+                lessonLayout.addView(code2);
+
+                TextView body3 = new TextView(this);
+                body3.setText(getString(R.string.l6_p1_body3));
+                layout(body3);
+                lessonLayout.addView(body3);
+
+                TextView code3 = new TextView(this);
+                code3.setText("(or (is 6 5) (is 0 0))\n(or false false true)\n\n(or (is 6 5) (is 0 1))\n(or false false)");
+                code3.setBackgroundColor(getColor(R.color.background_grey));
+                code3.setTextColor(getColor(R.color.lime));
+                layout(code3);
+                lessonLayout.addView(code3);
+
+                TextView body4 = new TextView(this);
+                body4.setText(getString(R.string.l6_p1_body4));
                 layout(body4);
                 lessonLayout.addView(body4);
             }

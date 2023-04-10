@@ -12,21 +12,23 @@
         android:layout_height="match_parent">
 
         <Button
-            android:id="@+id/toeditor"
+            android:id="@+id/to_editor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="52dp"
+            android:layout_marginEnd="14dp"
             android:layout_marginBottom="80dp"
-            android:text="@string/new_project"
             android:backgroundTint="@color/ssp_blue"
+            android:text="@string/new_project"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/delete_project"
             app:layout_constraintStart_toStartOf="parent"
             tools:visibility="visible" />
 
         <TextView
             android:id="@+id/textView"
-            android:layout_width="150dp"
-            android:layout_height="50dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginStart="130dp"
             android:layout_marginTop="31dp"
             android:layout_marginEnd="131dp"
@@ -43,7 +45,7 @@
             android:layout_height="0dp"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
-            app:layout_constraintBottom_toTopOf="@+id/toeditor"
+            app:layout_constraintBottom_toTopOf="@+id/to_editor"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView"
@@ -55,6 +57,20 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical" />
         </ScrollView>
+
+        <Button
+            android:id="@+id/delete_project"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="14dp"
+            android:layout_marginEnd="52dp"
+            android:layout_marginBottom="80dp"
+            android:backgroundTint="#ee0000"
+            android:text="@string/delete_project"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/to_editor" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

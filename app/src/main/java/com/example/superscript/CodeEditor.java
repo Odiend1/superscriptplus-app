@@ -7,7 +7,10 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.text.method.ScrollingMovementMethod;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,6 +23,8 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+
+import org.apache.commons.lang3.StringUtils;
 
 public class CodeEditor extends AppCompatActivity {
 
@@ -64,6 +69,37 @@ public class CodeEditor extends AppCompatActivity {
         });
 
         codeView = (EditText) findViewById(R.id.code);
+        codeView.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (keyCode == 34 && event.getAction() == KeyEvent.ACTION_UP) {
+                    int start = codeView.getSelectionStart();
+                    int end = codeView.getSelectionEnd();
+                    String text = codeView.getText().toString();
+                    if (start != end) {
+                        codeView.getText().insert(start, "\"");
+                        codeView.getText().insert(end + 1, "\"");
+                    }
+                }
+                return false;
+            }
+        });
+        codeView.addTextChangedListener(new TextWatcher(){
+            public void afterTextChanged(Editable s) {}
+            public void beforeTextChanged(CharSequence s, int start, int count, int after){
+                System.out.println(s);
+            }
+            public void onTextChanged(CharSequence s, int start, int before, int count){
+                //System.out.println(s);
+                if(s.length() > 0 && s.charAt(s.length() - 1) == '(' && StringUtils.countMatches(codeView.getText().toString(), "(") > StringUtils.countMatches(codeView.getText().toString(), ")")){
+                    codeView.setText(codeView.getText().toString().substring(0, start + 1) + ")" + codeView.getText().toString().substring(start + 1));
+                }
+                if(s.equals('"') && StringUtils.countMatches(codeView.getText().toString(), "\"") % 2 != 0){
+                    codeView.setText(codeView.getText().toString().substring(0, start + 1) + "\"" + codeView.getText().toString().substring(start + 1));
+                }
+            }
+        });
+
         Bundle extras = getIntent().getExtras();
         if(extras != null){
             filename = extras.getString("name") + ".ssp";

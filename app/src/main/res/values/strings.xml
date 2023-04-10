@@ -90,54 +90,74 @@
         Now that you can define and call variables, why don’t you try them out in the code editor?
     </string>
     <string name="l5_p1_body1">
+        In this lesson, we will explore the uses of user input in programming.
+        \n\n
+        User input allows a program to receive information while it is running, and it can use that information to adjust its behaviors and its output. In Superscript+, you can use the “read” function to receive text input from the user. The “read” function can take one argument, its prompt. The prompt will be printed when the user is asked for input.  A prompt is not required, though. You can also use the read function without any arguments. Below is an example that sets variable “input” to what the user types in through the ”read” function before printing the “input” variable.
+    </string>
+    <string name="l5_p1_body2">
+        The next code segment below greets the user by asking for their name through the “read” function and saying hello to them by name. The “pr” function prints things like the “prn” function, but the “prn” function starts a new line after printing while the “pr” function does not start a new line. So, the output will be “Hello, (name)!”, with the user-inputted “name” variable replacing (name).
+    </string>
+    <string name="l5_p1_body3">
+        Unfortunately, if we wanted to print something before asking for input, the text might go by so fast that the user will not be able to see it. To fix this issue, we can use the “sleep” function. The “sleep” function waits for a specified number of milliseconds before continuing to the next part of the code. Using this, you can give a delay between output text and a prompt for input. One second is 1000 milliseconds, so the code below waits for 3 seconds between welcoming the user and asking for their name.
+    </string>
+    <string name="l5_p2_body1">
+        You can also receive numbers through user input and perform operations on them. For example, the code segment below gets two numbers from the user and adds them before printing the value.
+    </string>
+    <string name="l5_p2_body2">
+        This code segment below gets rolls a dice with the number of faces the user specifies. The “rand” function gets a random integer with the first argument as the minimum and the second argument as the maximum (both are inclusive). The pause before the result is given was added for effect.
+    </string>
+    <string name="l5_p2_body3">
+        Now that you know how to obtain user input, why don’t you give it a try in the code editor?
+    </string>
+    <string name="l7_p1_body1">
         In this lesson, we will use if statements to test conditions.
         \n\n
         In programming, if statements are code that tests if something is true before running a piece of code. They test conditions, statements that evaluate to be either true or false. You can make conditions with a few functions, and one of them is the “is” function. The “is” function takes two arguments and checks if their values are equal. Then, depending on the result, it returns either true or false. The code segment below compares the values 1 and 1.
     </string>
-    <string name="l5_p1_body2">
+    <string name="l7_p1_body2">
         This would return true. However, if the values were different, like 1 and “Hi!”, it would return false. This code segment below checks if 1 is “Hi!”, and since 1 is not “Hi!”, it returns false.
     </string>
-    <string name="l5_p1_body3">
+    <string name="l7_p1_body3">
         You can use these conditions in an if statement. In Superscript+, you can create if statements with the “if” function. This function takes a condition as its first argument, and if it is true, it will run the code in its second argument. If it is false, an else statement will occur, and the code in the third argument will be run instead. This code segment below sets the variable “number” to 3 and checks if it is equal to 3. If it is, it will print “Equal!”. If it is not, it will print “Not equal.”.
     </string>
-    <string name="l5_p1_body4">
+    <string name="l7_p1_body4">
         If you don’t want an else statement, you can simply put nothing as that argument. Now, this function will only print if the condition is true.
     </string>
-    <string name="l5_p2_body1">
+    <string name="l7_p2_body1">
         You can also compare two values in conditions. The “&gt;” function, or greater than function, and the “&lt;” function, or less than function. With these, you can check if the first given argument is greater than or less than the other argument. These functions can only compare numbers, as text cannot be compared in this way. The following code segment checks if the variable “num1” is larger than “num2”. In this case, this is true, so “The first number is bigger!” will be printed.
     </string>
-    <string name="l5_p2_body2">
+    <string name="l7_p2_body2">
         This code segment below checks if the variable num1 is smaller than num2. Since it is not smaller, the condition will return false, so “The second number is smaller!” will be printed.
     </string>
-    <string name="l5_p2_body3">
+    <string name="l7_p2_body3">
         However, if the numbers were switched around in the condition, true will be returned, and “The first number is smaller!” will be printed.
     </string>
-    <string name="l5_p3_body1">
+    <string name="l7_p3_body1">
         To run more than one function as a result of an if statement, you can use the “do” function. The “do” function takes multiple functions as its arguments and runs those functions. The code below checks if the variable “score” is greater than 100, and if it is, “You win!” and the score is printed.
     </string>
-    <string name="l5_p3_body2">
+    <string name="l7_p3_body2">
         That code was also indented to make it more readable. The contents of the if and the do were pushed further so they would stand out from the rest of the code. Of course, indentation isn’t necessary, but it’s a good practice when writing code.
         \n\n
         To create a condition that tests for something if one condition is false, you can use an else-if statement. In the previous code, an else-if statement checks if the score is below 0, and if it is, “Game over!” is printed.
     </string>
-    <string name="l5_p3_body3">
+    <string name="l7_p3_body3">
         The code above basically adds an if statement to the first if statement’s else. You can use this to test multiple conditions and do different things for each of them. Here’s another example that also incorporates an else statement.
     </string>
-    <string name="l5_p3_body4">
+    <string name="l7_p3_body4">
         In the next lesson, we will learn more about comparing values and if statements as we go over do statements and logical operators.
     </string>
-    <string name="l6_p1_body1">
+    <string name="l8_p1_body1">
         In this lesson, we will learn about logical operators.
         \n\n
         Logical operators are things that can take in one or more booleans (true or false values) and get another boolean result. One of these logical operators is the “not” operator. The “not” operator takes one boolean and inverts its value. If it was true before, it would become false, and if it was false before, it would become true. You can use the “not” operator through the “not” function in Superscript+. Below is an example of how the not operator would be used in code.
     </string>
-    <string name="l6_p1_body2">
+    <string name="l8_p1_body2">
         Another logical operator is the “and” operator. The “and” operator can take more than one boolean. All the booleans in the and operator must be true for the and operator to return true. If one of them is false, the operator will return false. The first two examples return true while the second two return false.
     </string>
-    <string name="l6_p1_body3">
+    <string name="l8_p1_body3">
         The last logical operator with a Superscript+ function is the “or” operator. The “or” operator checks if either of its values are true, and if one is, it returns true. No matter how many values are false, it only one is true, the or operator will return true. The first two examples return true while the second two return false.
     </string>
-    <string name="l6_p1_body4">
+    <string name="l8_p1_body4">
         Now, why don\’t you try these logical operators in the code editor?
     </string>
     <string name="lesson_1_name">Lesson 1 - Intro to Superscript+</string>
@@ -145,7 +165,12 @@
     <string name="lesson_3_name"><![CDATA[Lesson 3 - Arithmetic & Nested Functions]]></string>
     <string name="lessons">Lessons</string>
     <string name="lesson_4_name">Lesson 4 - Variables</string>
-    <string name="lesson_5_name"><![CDATA[Lesson 5 - If Statements & Conditions]]></string>
-    <string name="lesson_6_name">Lesson 6 - Logical Operators</string>
-    <string name="lesson_7_name">Lesson 7 - User Input</string>
+    <string name="lesson_5_name">Lesson 5 - User Input</string>
+    <string name="lesson_6_name">Lesson 6 - String Manipulation</string>
+    <string name="lesson_7_name"><![CDATA[Lesson 7 - If Statements & Conditions]]></string>
+    <string name="lesson_8_name">Lesson 8 - Logical Operators</string>
+    <string name="lesson_9_name">Lesson 9 - Loops</string>
+    <string name="lesson_10_name">Lesson 10 - Infix Expressions</string>
+    <string name="superscript_plus_logo">Superscript Plus Logo</string>
+    <string name="delete_project">Delete Project</string>
 </resources>

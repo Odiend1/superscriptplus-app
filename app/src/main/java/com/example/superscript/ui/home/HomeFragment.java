@@ -40,6 +40,8 @@ public class HomeFragment extends Fragment {
     private Button lesson4;
     private Button lesson5;
     private Button lesson6;
+    private Button lesson7;
+    private Button lesson8;
 
     public static HomeFragment newInstance(String param1, String param2) {
         HomeFragment fragment = new HomeFragment();
@@ -101,6 +103,20 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 openLesson(6);
+            }
+        });
+        lesson7 = lessonListLayout.findViewById(R.id.lesson7);
+        lesson7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openLesson(7);
+            }
+        });
+        lesson8 = lessonListLayout.findViewById(R.id.lesson8);
+        lesson8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openLesson(8);
             }
         });
 

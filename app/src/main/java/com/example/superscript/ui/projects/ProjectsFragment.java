@@ -1,5 +1,7 @@
 package com.example.superscript.ui.projects;
 
+import static android.content.Context.MODE_PRIVATE;
+
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -21,7 +23,12 @@ import com.example.superscript.CodeEditor;
 import com.example.superscript.R;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FilenameFilter;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -54,6 +61,9 @@ public class ProjectsFragment extends Fragment {
     // TODO: Rename and change types and number of parameters
 
     private Button toEditor;
+    private Button deleteProject;
+    private HashMap<String, Button> projectButtons = new HashMap<String, Button>();
+    private Boolean deleting = false;
 
     public static ProjectsFragment newInstance(String param1, String param2) {
         ProjectsFragment fragment = new ProjectsFragment();
@@ -79,7 +89,7 @@ public class ProjectsFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_projects, container, false);
 
-        toEditor = view.findViewById(R.id.toeditor);
+        toEditor = view.findViewById(R.id.to_editor);
         toEditor.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
@@ -98,16 +108,53 @@ public class ProjectsFragment extends Fragment {
         LinearLayout projectList = scrollView.findViewById(R.id.project_list);
         for(File file : files){
             Button project = new Button(getContext());
+            projectButtons.put(file.getName(), project);
             project.setText(file.getName().substring(0, file.getName().length() - 4));
             project.setAllCaps(false);
             projectList.addView(project);
             project.setOnClickListener(new View.OnClickListener(){
                @Override
                public void onClick(View v){
-                   openCodeEditor(v, file.getName().substring(0, file.getName().length() - 4), false);
+                   if(!deleting) {
+                       openCodeEditor(v, file.getName().substring(0, file.getName().length() - 4), false);
+                   }
+                   else{
+                       new AlertDialog.Builder(getActivity()).setIcon(android.R.drawable.ic_dialog_alert)
+                               .setTitle("Delete Project \"" + file.getName().substring(0, file.getName().length() - 4) + "\"").setMessage(" Are you sure you want to delete this project? This cannot be undone.")
+                               .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                   @Override
+                                   public void onClick(DialogInterface dialog, int which) {
+                                       File projectFile = new File(getActivity().getFilesDir(), file.getName());
+                                       if(projectFile.delete()){
+                                           getActivity().recreate();
+                                           Toast.makeText(getContext(), "Project was successfully deleted.", Toast.LENGTH_SHORT).show();
+                                       }
+                                       else{
+                                           Toast.makeText(getContext(), "An error occurred while deleting the project.", Toast.LENGTH_SHORT).show();
+                                       }
+                                       deleting = false;
+                                       getView().setBackgroundColor(getResources().getColor(R.color.background_grey));
+                                   }
+                               }).setNegativeButton("No", null).show();
+                   }
                }
             });
         }
+
+        deleteProject = view.findViewById(R.id.delete_project);
+        deleteProject.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(!deleting){
+                    deleting = true;
+                    getView().setBackgroundColor(getResources().getColor(R.color.crimson));
+                }
+                else{
+                    deleting = false;
+                    getView().setBackgroundColor(getResources().getColor(R.color.background_grey));
+                }
+            }
+        });
 
         return view;
     }
@@ -139,13 +186,30 @@ public class ProjectsFragment extends Fragment {
             }
             if(!buttonExists) {
                 Button project = new Button(getContext());
+                projectButtons.put(file.getName(), project);
                 project.setText(file.getName().substring(0, file.getName().length() - 4));
                 project.setAllCaps(false);
                 projectList.addView(project);
                 project.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        openCodeEditor(v, file.getName().substring(0, file.getName().length() - 4), false);
+                        new AlertDialog.Builder(getActivity()).setIcon(android.R.drawable.ic_dialog_alert)
+                                .setTitle("Delete Project \"" + file.getName().substring(0, file.getName().length() - 4) + "\"").setMessage(" Are you sure you want to delete this project? This cannot be undone.")
+                                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        File projectFile = new File(getActivity().getFilesDir(), file.getName());
+                                        if(projectFile.delete()){
+                                            Toast.makeText(getContext(), "Project was successfully deleted.", Toast.LENGTH_SHORT).show();
+                                            getActivity().recreate();
+                                        }
+                                        else{
+                                            Toast.makeText(getContext(), "An error occurred while deleting the project.", Toast.LENGTH_SHORT).show();
+                                        }
+                                        deleting = false;
+                                        getView().setBackgroundColor(getResources().getColor(R.color.background_grey));
+                                    }
+                                }).setNegativeButton("No", null).show();
                     }
                 });
             }

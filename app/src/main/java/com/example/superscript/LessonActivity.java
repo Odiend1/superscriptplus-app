@@ -277,7 +277,7 @@ public class LessonActivity extends AppCompatActivity {
                 lessonLayout.addView(body1);
 
                 TextView code1 = new TextView(this);
-                code1.setText("(is 1 1)");
+                code1.setText("(= input (read)) (prn input)");
                 code1.setBackgroundColor(getColor(R.color.background_grey));
                 code1.setTextColor(getColor(R.color.lime));
                 layout(code1);
@@ -289,7 +289,7 @@ public class LessonActivity extends AppCompatActivity {
                 lessonLayout.addView(body2);
 
                 TextView code2 = new TextView(this);
-                code2.setText("(is 1 “Hi!”)");
+                code2.setText("(= name (read “What is your name?”)) (pr “Hello, “) (pr name) (prn “!”)");
                 code2.setBackgroundColor(getColor(R.color.background_grey));
                 code2.setTextColor(getColor(R.color.lime));
                 layout(code2);
@@ -301,6 +301,81 @@ public class LessonActivity extends AppCompatActivity {
                 lessonLayout.addView(body3);
 
                 TextView code3 = new TextView(this);
+                code3.setText("(prn “Welcome to the program!”)\n(sleep 3000)\n(= name (read “What is your name?”)) (pr “Hello, “) (pr name) (prn “!”)");
+                code3.setBackgroundColor(getColor(R.color.background_grey));
+                code3.setTextColor(getColor(R.color.lime));
+                layout(code3);
+                lessonLayout.addView(code3);
+            }
+            else if(pageNum == 2){
+                TextView body1 = new TextView(this);
+                body1.setText(getString(R.string.l5_p2_body1));
+                layout(body1);
+                lessonLayout.addView(body1);
+
+                TextView code1 = new TextView(this);
+                code1.setText("(= num1 (read “Enter one number to add.”)) (= num2 (read “Enter another number to add.”))(pr “The sum of those numbers is: ”) (prn (+ num1 num2))");
+                code1.setBackgroundColor(getColor(R.color.background_grey));
+                code1.setTextColor(getColor(R.color.lime));
+                layout(code1);
+                lessonLayout.addView(code1);
+
+                TextView body2 = new TextView(this);
+                body2.setText(getString(R.string.l5_p2_body2));
+                layout(body2);
+                lessonLayout.addView(body2);
+
+                TextView code2 = new TextView(this);
+                code2.setText("(= faces (read \"How many faces should the dice have? \"))\n(pr \"The dice rolled... \") (sleep 500) (prn (rand 1 faces))\n");
+                code2.setBackgroundColor(getColor(R.color.background_grey));
+                code2.setTextColor(getColor(R.color.lime));
+                layout(code2);
+                lessonLayout.addView(code2);
+
+                TextView body3 = new TextView(this);
+                body3.setText(getString(R.string.l5_p2_body3));
+                layout(body3);
+                lessonLayout.addView(body3);
+            }
+            else{
+                exitLesson();
+            }
+        }
+        else if(lessonNum == 6){
+
+        }
+        else if(lessonNum == 7){
+            if(pageNum == 1){
+                TextView body1 = new TextView(this);
+                body1.setText(getString(R.string.l7_p1_body1));
+                layout(body1);
+                lessonLayout.addView(body1);
+
+                TextView code1 = new TextView(this);
+                code1.setText("(is 1 1)");
+                code1.setBackgroundColor(getColor(R.color.background_grey));
+                code1.setTextColor(getColor(R.color.lime));
+                layout(code1);
+                lessonLayout.addView(code1);
+
+                TextView body2 = new TextView(this);
+                body2.setText(getString(R.string.l7_p1_body2));
+                layout(body2);
+                lessonLayout.addView(body2);
+
+                TextView code2 = new TextView(this);
+                code2.setText("(is 1 “Hi!”)");
+                code2.setBackgroundColor(getColor(R.color.background_grey));
+                code2.setTextColor(getColor(R.color.lime));
+                layout(code2);
+                lessonLayout.addView(code2);
+
+                TextView body3 = new TextView(this);
+                body3.setText(getString(R.string.l7_p1_body3));
+                layout(body3);
+                lessonLayout.addView(body3);
+
+                TextView code3 = new TextView(this);
                 code3.setText("(= number 3)\n(if (is number 3) (prn “Equal!”) (prn “Not equal.”))");
                 code3.setBackgroundColor(getColor(R.color.background_grey));
                 code3.setTextColor(getColor(R.color.lime));
@@ -308,7 +383,7 @@ public class LessonActivity extends AppCompatActivity {
                 lessonLayout.addView(code3);
 
                 TextView body4 = new TextView(this);
-                body4.setText(getString(R.string.l5_p1_body4));
+                body4.setText(getString(R.string.l7_p1_body4));
                 layout(body4);
                 lessonLayout.addView(body4);
 
@@ -321,7 +396,7 @@ public class LessonActivity extends AppCompatActivity {
             }
             else if(pageNum == 2){
                 TextView body1 = new TextView(this);
-                body1.setText(getString(R.string.l5_p2_body1));
+                body1.setText(getString(R.string.l7_p2_body1));
                 layout(body1);
                 lessonLayout.addView(body1);
 
@@ -333,7 +408,7 @@ public class LessonActivity extends AppCompatActivity {
                 lessonLayout.addView(code1);
 
                 TextView body2 = new TextView(this);
-                body2.setText(getString(R.string.l5_p2_body2));
+                body2.setText(getString(R.string.l7_p2_body2));
                 layout(body2);
                 lessonLayout.addView(body2);
 
@@ -345,7 +420,7 @@ public class LessonActivity extends AppCompatActivity {
                 lessonLayout.addView(code2);
 
                 TextView body3 = new TextView(this);
-                body3.setText(getString(R.string.l5_p2_body3));
+                body3.setText(getString(R.string.l7_p2_body3));
                 layout(body3);
                 lessonLayout.addView(body3);
 
@@ -358,7 +433,7 @@ public class LessonActivity extends AppCompatActivity {
             }
             else if(pageNum == 3){
                 TextView body1 = new TextView(this);
-                body1.setText(getString(R.string.l5_p3_body1));
+                body1.setText(getString(R.string.l7_p3_body1));
                 layout(body1);
                 lessonLayout.addView(body1);
 
@@ -370,7 +445,7 @@ public class LessonActivity extends AppCompatActivity {
                 lessonLayout.addView(code1);
 
                 TextView body2 = new TextView(this);
-                body2.setText(getString(R.string.l5_p3_body2));
+                body2.setText(getString(R.string.l7_p3_body2));
                 layout(body2);
                 lessonLayout.addView(body2);
 
@@ -382,7 +457,7 @@ public class LessonActivity extends AppCompatActivity {
                 lessonLayout.addView(code2);
 
                 TextView body3 = new TextView(this);
-                body3.setText(getString(R.string.l5_p3_body3));
+                body3.setText(getString(R.string.l7_p3_body3));
                 layout(body3);
                 lessonLayout.addView(body3);
 
@@ -394,7 +469,7 @@ public class LessonActivity extends AppCompatActivity {
                 lessonLayout.addView(code3);
 
                 TextView body4 = new TextView(this);
-                body4.setText(getString(R.string.l5_p3_body4));
+                body4.setText(getString(R.string.l7_p3_body4));
                 layout(body4);
                 lessonLayout.addView(body4);
             }
@@ -402,10 +477,10 @@ public class LessonActivity extends AppCompatActivity {
                 exitLesson();
             }
         }
-        else if(lessonNum == 6){
+        else if(lessonNum == 8){
             if(pageNum == 1){
                 TextView body1 = new TextView(this);
-                body1.setText(getString(R.string.l6_p1_body1));
+                body1.setText(getString(R.string.l8_p1_body1));
                 layout(body1);
                 lessonLayout.addView(body1);
 
@@ -417,7 +492,7 @@ public class LessonActivity extends AppCompatActivity {
                 lessonLayout.addView(code1);
 
                 TextView body2 = new TextView(this);
-                body2.setText(getString(R.string.l6_p1_body2));
+                body2.setText(getString(R.string.l8_p1_body2));
                 layout(body2);
                 lessonLayout.addView(body2);
 
@@ -429,7 +504,7 @@ public class LessonActivity extends AppCompatActivity {
                 lessonLayout.addView(code2);
 
                 TextView body3 = new TextView(this);
-                body3.setText(getString(R.string.l6_p1_body3));
+                body3.setText(getString(R.string.l8_p1_body3));
                 layout(body3);
                 lessonLayout.addView(body3);
 
@@ -441,7 +516,7 @@ public class LessonActivity extends AppCompatActivity {
                 lessonLayout.addView(code3);
 
                 TextView body4 = new TextView(this);
-                body4.setText(getString(R.string.l6_p1_body4));
+                body4.setText(getString(R.string.l8_p1_body4));
                 layout(body4);
                 lessonLayout.addView(body4);
             }

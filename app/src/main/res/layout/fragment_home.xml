@@ -100,6 +100,33 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:focusableInTouchMode="false" />
+
+            <Button
+                android:id="@+id/lesson8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/lesson_8_name"
+                android:clickable="true"
+                android:focusable="true"
+                android:focusableInTouchMode="false" />
+
+            <Button
+                android:id="@+id/lesson9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/lesson_9_name"
+                android:clickable="true"
+                android:focusable="true"
+                android:focusableInTouchMode="false" />
+
+            <Button
+                android:id="@+id/lesson10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/lesson_10_name"
+                android:clickable="true"
+                android:focusable="true"
+                android:focusableInTouchMode="false" />
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

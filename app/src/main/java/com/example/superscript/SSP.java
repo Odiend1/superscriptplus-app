@@ -258,7 +258,7 @@ public class SSP {
           if(operation.equals("-") || operation.equals("/")) finalNum = Float.parseFloat(args.get(0));
         }
         catch(NumberFormatException e){
-          output.setText(output.getText().toString() + "\n" + "Error: Function " + operation + " cannot convert type string to number");
+          output.setText(output.getText().toString() + "\n" + "Error: Function " + operation + " cannot convert non-numeric value to number");
         }
 
         if (args.size() > 0 && (operation.equals("-") || operation.equals("/")) ? args.size() > 1 : true) {
@@ -283,7 +283,7 @@ public class SSP {
                   break;
               }
             } catch (NumberFormatException e) {
-              output.setText(output.getText().toString() + "\n" + "Error: Function " + operation + " cannot convert type string to number");
+              output.setText(output.getText().toString() + "\n" + "Error: Function " + operation + " cannot convert non-numeric value to number");
               return null;
             }
           }
@@ -506,7 +506,7 @@ public class SSP {
               execute(compile(exec.args.get(1)));
             }
           } catch (NumberFormatException e) {
-            output.setText(output.getText().toString() + "\n" + "Error: Function " + exec.function + " cannot convert type string to number");
+            output.setText(output.getText().toString() + "\n" + "Error: Function " + exec.function + " cannot convert non-numeric value to number");
           }
         }
       }
@@ -558,7 +558,7 @@ public class SSP {
             Thread.currentThread().interrupt();
           }
           catch(NumberFormatException e){
-            output.setText(output.getText().toString() + "\n" + "Error: Function " + exec.function + " cannot convert type string to number");
+            output.setText(output.getText().toString() + "\n" + "Error: Function " + exec.function + " cannot convert non-numeric value to number");
             return new ArrayList<Function>();
           }
         } else {
@@ -622,13 +622,15 @@ public class SSP {
         }
         catch(NumberFormatException e){
           if(!(ex.equals("true") || ex.equals("false"))){
-          output.setText(output.getText().toString() + "\n" + "Error: Infix expression cannot convert type string to number");
+          output.setText(output.getText().toString() + "\n" + "Error: Infix expression cannot convert non-numeric value to number");
             return new ArrayList<Function>();
           }
         }
         res.result = ex;
         results.add(res);
       }
+
+      // not function
       else if (exec.function.equals("not")){
         if(exec.args.size() == 1){
           if(exec.args.get(0).equals("true")){
@@ -648,6 +650,8 @@ public class SSP {
           return new ArrayList<Function>();
         }
       }
+
+      // and function
       else if (exec.function.equals("and")){
         if(exec.args.size() > 1){
           Boolean result = true;
@@ -668,6 +672,8 @@ public class SSP {
           return new ArrayList<Function>();
         }
       }
+
+      // or function
       else if(exec.function.equals("or")){
         if(exec.args.size() > 1){
           Boolean result = false;
@@ -688,6 +694,24 @@ public class SSP {
           return new ArrayList<Function>();
         }
       }
+
+      // rand function
+      else if(exec.function.equals("rand")){
+        if(exec.args.size() == 2){
+          try{
+            res.result = String.valueOf((int)(Math.random() * Float.parseFloat(exec.args.get(1)) + Float.parseFloat(exec.args.get(0))));
+          }
+          catch(NumberFormatException e){
+            output.setText(output.getText().toString() + "\n" +"Error: Function " + exec.function + " cannot convert non-numeric value to number");
+          }
+          results.add(res);
+        }
+        else{
+          output.setText(output.getText().toString() + "\n" +"Error: Invalid number of arguments given for function " + exec.function + ".");
+          return new ArrayList<Function>();
+        }
+      }
+
       else {
         output.setText(output.getText().toString() + "\n" + "Error: Undefined function " + exec.function);
         return new ArrayList<Function>();

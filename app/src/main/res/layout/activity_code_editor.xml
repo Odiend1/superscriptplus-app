@@ -9,11 +9,11 @@
 
     <EditText
         android:id="@+id/code"
-        android:layout_width="352dp"
+        android:layout_width="0dp"
         android:layout_height="220dp"
-        android:layout_marginStart="68dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="92dp"
-        android:layout_marginEnd="63dp"
+        android:layout_marginEnd="16dp"
         android:background="#222222"
         android:ems="10"
         android:fontFamily="monospace"
@@ -73,11 +73,11 @@
 
     <TextView
         android:id="@+id/output"
-        android:layout_width="357dp"
+        android:layout_width="0dp"
         android:layout_height="319dp"
-        android:layout_marginStart="27dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="364dp"
-        android:layout_marginEnd="27dp"
+        android:layout_marginEnd="16dp"
         android:background="#222222"
         android:fontFamily="monospace"
         android:gravity="start"

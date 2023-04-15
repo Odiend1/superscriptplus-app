@@ -251,47 +251,48 @@ public class SSP {
   public static String operate(String operation, ArrayList<String> args){
     // Final number that will be returned
     float finalNum;
+    finalNum = 0;
+    if(operation.equals("*")) finalNum = 1;
+    if(operation.equals("-") && args.get(0).equals("")) args.set(0, "0");
+    try{
+      if(operation.equals("-") || operation.equals("/")) finalNum = Float.parseFloat(args.get(0));
+    }
+    catch(NumberFormatException e){
+      System.out.println("Error: Function " + operation + " cannot convert non-numeric value to number");
+      return null;
+    }
 
-        finalNum = 0;
-        if(operation.equals("*")) finalNum = 1;
-        try{
-          if(operation.equals("-") || operation.equals("/")) finalNum = Float.parseFloat(args.get(0));
-        }
-        catch(NumberFormatException e){
-          output.setText(output.getText().toString() + "\n" + "Error: Function " + operation + " cannot convert non-numeric value to number");
-        }
-
-        if (args.size() > 0 && (operation.equals("-") || operation.equals("/")) ? args.size() > 1 : true) {
-          for (int i = (operation.equals("+") || operation.equals("*")) ? 0 : 1; i < args.size(); i++) {
-            try {
-              if (Float.parseFloat(args.get(i)) == 0f && operation.equals("/")) {
-              output.setText(output.getText().toString() + "\n" + "Error: Cannot divide by zero");
-              return null;
-            }
-              switch(operation){
-                case "+":
-                  finalNum += Float.parseFloat(args.get(i));
-                  break;
-                case "-":
-                  finalNum -= Float.parseFloat(args.get(i));
-                  break;
-                case "*":
-                  finalNum *= Float.parseFloat(args.get(i));
-                  break;
-                case "/":
-                  finalNum /= Float.parseFloat(args.get(i));
-                  break;
-              }
-            } catch (NumberFormatException e) {
-              output.setText(output.getText().toString() + "\n" + "Error: Function " + operation + " cannot convert non-numeric value to number");
-              return null;
-            }
+    if (args.size() > 0 && (operation.equals("-") || operation.equals("/")) ? args.size() > 1 : true) {
+      for (int i = (operation.equals("+") || operation.equals("*")) ? 0 : 1; i < args.size(); i++) {
+        try {
+          if (Float.parseFloat(args.get(i)) == 0f && operation.equals("/")) {
+            System.out.println("Error: Cannot divide by zero");
+            return null;
           }
-        } else {
-          output.setText(output.getText().toString() + "\n" + "Error: Invalid number of arguments given for function " + operation + ".");
+          switch(operation){
+            case "+":
+              finalNum += Float.parseFloat(args.get(i));
+              break;
+            case "-":
+              finalNum -= Float.parseFloat(args.get(i));
+              break;
+            case "*":
+              finalNum *= Float.parseFloat(args.get(i));
+              break;
+            case "/":
+              finalNum /= Float.parseFloat(args.get(i));
+              break;
+          }
+        } catch (NumberFormatException e) {
+          System.out.println("Error: Function " + operation + " cannot convert non-numeric value to number");
           return null;
         }
-      
+      }
+    } else {
+      System.out.println("Error: Invalid number of arguments given for function " + operation + ".");
+      return null;
+    }
+
     return (String.valueOf(finalNum).endsWith(".0")
             ? String.valueOf(finalNum).substring(0, String.valueOf(finalNum).length() - 2)
             : String.valueOf(finalNum));
@@ -571,6 +572,7 @@ public class SSP {
       else if (exec.function.equals("infix")){
         String ex = String.join("", exec.args);
         ex = ex.replaceAll("\\s","");
+        // multiplication and division
         for(int i = 0; i < ex.length(); i++){
           Character infixChar = ex.charAt(i);
           if(infixChar.equals('*') || infixChar.equals('/')){
@@ -585,15 +587,16 @@ public class SSP {
             int rStart = (j != 0) ? j + 1 : j;
             j = i + 1;
             while(j < ex.length() && numeric.contains(ex.charAt(j))){
+              if(!num2.equals("") && ex.charAt(j) == '-') break;
               num2 += ex.charAt(j);
               j++;
             }
             int rEnd = j;
-            if(operate(String.valueOf(infixChar), new ArrayList<String>(Arrays.asList(num1, num2))) == null) return new ArrayList<Function>();
             ex = ex.substring(0, rStart) + String.valueOf(operate(String.valueOf(infixChar), new ArrayList<String>(Arrays.asList(num1, num2)))) + ex.substring(rEnd);
             i = rStart;
           }
         }
+        // addition and subtraction
         for(int i = 0; i < ex.length(); i++){
           Character infixChar = ex.charAt(i);
           if(infixChar.equals('+') || infixChar.equals('-')){
@@ -608,21 +611,58 @@ public class SSP {
             int rStart = (j != 0) ? j + 1 : j;
             j = i + 1;
             while(j < ex.length() && numeric.contains(ex.charAt(j))){
+              if(!num2.equals("") && ex.charAt(j) == '-') break;
               num2 += ex.charAt(j);
               j++;
             }
             int rEnd = j;
-            if(operate(String.valueOf(infixChar), new ArrayList<String>(Arrays.asList(num1, num2))) == null) return new ArrayList<Function>();
             ex = ex.substring(0, rStart) + String.valueOf(operate(String.valueOf(infixChar), new ArrayList<String>(Arrays.asList(num1, num2)))) + ex.substring(rEnd);
             i = rStart;
           }
         }
+        // comparison operators
+        /*for(int i = 0; i < ex.length(); i++){
+          Character infixChar = ex.charAt(i);
+          if((infixChar.equals('i') && (i != ex.length() - 1) ? ex.charAt(i + 1) == 's' : false) || infixChar.equals('<') || infixChar.equals('>')){
+            String arg1 = "";
+            String arg2 = "";
+            Boolean inString = false;
+            int j = i - 1;
+            while(j >= 0 && (ex.charAt(j) != ' ' || ex.charAt(j) == '"' || inString)){
+              if(ex.charAt(j) == '"') inString = !inString;
+              arg1 += ex.charAt(j);
+              j--;
+            }
+            arg1 = new StringBuilder(arg1).reverse().toString();
+            if(!validData(arg1)){
+              System.out.println("Error: Invalid symbol " + arg1);
+              return new ArrayList<Function
+( ;           }
+            int rStart = (j != 0) ? j + 1 : j;
+            j = (infixChar.equals('i')) ? i + 2 : i + 1;
+            inString = false;
+            while(j < ex.length() && (ex.charAt(j) != ' ' || ex.charAt(j) == '"' || inString)){
+              if(ex.charAt(j) == '"') inString = !inString;
+              arg2 += ex.charAt(j);
+              j++;
+            }
+            int rEnd = j;
+            try{
+            ex = ex.substring(0, rStart) + String.valueOf((infixChar.equals('i') ? arg1.equals(arg2) : infixChar.equals('<') ? Float.parseFloat(arg1) < Float.parseFloat(arg2) : Float.parseFloat(arg1) > Float.parseFloat(arg2))) + ex.substring(rEnd);
+          }
+            catch(NumberFormatException e){
+              System.out.println("Error: Infix expression cannot convert non-numeric value to number");
+              return new ArrayList<Function
+( ;           }
+            i = rStart;
+          }
+        }*/
         try{
           Float.parseFloat(ex);
         }
         catch(NumberFormatException e){
           if(!(ex.equals("true") || ex.equals("false"))){
-          output.setText(output.getText().toString() + "\n" + "Error: Infix expression cannot convert non-numeric value to number");
+            System.out.println("Error: Infix expression cannot convert non-numeric value to number");
             return new ArrayList<Function>();
           }
         }

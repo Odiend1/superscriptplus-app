@@ -238,15 +238,15 @@ Superscript+ is a programming language that uses a parenthesized prefix notation
 <br><br>
 > ([function] [argument 1] [argument 2] [argument ...])
 <br><br>
-Superscript+ has 3 data types: strings, numbers, and booleans.
+<b>I.</b> Superscript+ has 3 data types: strings, numbers, and booleans.
 <br><br>
 Strings are enclosed in double quotations (ex. "Hello world!").
 <br>
-Numbers do not need quotes, and may consist of numerical values, decimals, and the negative sign (ex. -1.414).
+Numbers do not need quotes, and may consist of numberical values, decimals, and the negative sign (ex. -1.414).
 <br>
 Booleans do not need quotes either. Booleans are written in all lowercase (ex. false).
 <br><br>
-Superscript+ has 27 functions.
+<b>II.</b> Superscript+ has 27 functions.
 <br><br>____________________<br><br>
 <b>prn</b> function
 <br><br>
@@ -350,7 +350,7 @@ Usage: (&lt; [number 1] [number 2])
 <br><br>____________________<br><br>
 <b>></b> function
 <br><br>
-- Returns boolean result of whether first argument is greater than second argument
+- Returns boolean result of whether first argument is greather than second argument
 <br><br>
 Usage: (> [number 1] [number 2])
 <br><br>
@@ -527,7 +527,15 @@ Usage: (rand [number 1] [number 2])
 > (rand 1 10)
 <br><br>
 <b>6</b>
-<br><br>____________________<br><br>
-]]>
+<br><br>____________________<br>
+<b>III. </b>Superscript+ can perform arithmetic in infix notation in expressions called infix expressions. Follows order of operations. Infix expressions can be nested in other infix expressions.
+<br><br>
+Usage: {[argument 1] [operator] [argument 2]}
+<br><br>
+> (prn {4 / 2 + 3 * 5 - 6})
+<br><br>
+<b>11</b>
+<br><br>
+____________________]]>
     </string>
 </resources>

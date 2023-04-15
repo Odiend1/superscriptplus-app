@@ -13,4 +13,5 @@
     <color name="red">#ff0000</color>
     <color name="cyan">#00ffff</color>
     <color name="crimson">#880000</color>
+    <color name="light_grey">#888888</color>
 </resources>

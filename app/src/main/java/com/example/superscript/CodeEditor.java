@@ -23,6 +23,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -35,6 +36,8 @@ public class CodeEditor extends AppCompatActivity {
     private String filename = "new.ssp";
     private Button save;
     private String lastSaved;
+    private Boolean running = false;
+    private Thread executionThread;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +49,20 @@ public class CodeEditor extends AppCompatActivity {
         run = (Button) findViewById(R.id.run);
         run.setOnClickListener(new View.OnClickListener(){
             @Override
-            public void onClick(View v){ runCode(); }
+            public void onClick(View v){
+                if(running == false) {
+                    running = true;
+                    run.setText("Stop");
+                    run.setBackgroundColor(getResources().getColor(R.color.light_grey));
+                    runCode();
+                }
+                else{
+                    executionThread.interrupt();
+                    running = false;
+                    run.setText("Run");
+                    run.setBackgroundColor(getResources().getColor(R.color.lime));
+                }
+            }
         });
 
         output = (TextView) findViewById(R.id.output);
@@ -120,12 +136,18 @@ public class CodeEditor extends AppCompatActivity {
         output.setText("");
         ssp.output = output;
         ssp.activity = this;
-        Thread thread = new Thread(new Runnable() {
+        executionThread = new Thread(new Runnable() {
             public void run() {
+                running = true;
+                run.setText("Stop");
+                run.setBackgroundColor(getResources().getColor(R.color.light_grey));
                 ssp.execute(ssp.compile(code));
+                running = false;
+                run.setText("Run");
+                run.setBackgroundColor(getResources().getColor(R.color.lime));
             }
         });
-        thread.start();
+        executionThread.start();
     }
 
     public void goBack(){

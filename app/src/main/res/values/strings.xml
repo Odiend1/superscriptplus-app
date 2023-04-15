@@ -180,6 +180,44 @@
     <string name="l8_p2_body3">
         Now, why don’t you try to implement string manipulation into your own code?
     </string>
+    <string name="l9_p1_body1">
+        In this lesson, we will discuss the uses of loops in coding.
+        \n\n
+        A loop is a piece of code that iterates, or repeats, its contents until a specified condition is met. One of these loops is called a while loop. While loops are given a condition, and while the condition is met, the code inside the loop will be repeated. In Superscript+, you can use the “while” function to implement a while loop. The “while” function takes a condition as its first argument and runs the code given in its second argument while that condition is met. Below is an example of a while loop that prints the “number” variable while “number” is less than 10.
+    </string>
+    <string name="l9_p1_body2">
+        Here is another while loop that asks the user a question and repeatedly asks the user for the correct answer while the answer is wrong. The program waits for two seconds after saying the answer is incorrect to give the user time to read. If the condition isn’t met when the while loop is tested, it will not run the code inside the loop and tell the user they are correct.
+    </string>
+    <string name="l9_p2_body1">
+        Another way you can implement a loop in Superscript+ is through the “repeat” function. The repeat function repeats the code in its second argument for as many times as specified in the first argument. Here is code that counts to 100 using the “repeat” function.
+    </string>
+    <string name="l9_p2_body2">
+        The “repeat” function is handy when you want to repeat some next a specific amount of times. It allows you to repeat code without having to write it out many times. Below is an example of how the “repeat” function can be used to generate a random 10-character password. The code gets a random character from the “characters” variable on every iteration of the loop and adds it to the final password before finally printing the password.
+    </string>
+    <string name="l9_p2_body3">
+        Now, why don’t you try implementing loops into your own projects?
+    </string>
+    <string name="l10_p1_body1">
+        In this lesson, we will use infix expressions instead of Superscript+’s traditional parenthesized prefix notation.
+        \n\n
+        In Superscript+, code is usually written in parenthesized prefix notation. However, there are special pieces of code that can be written without use of parentheses. These are called infix expressions. Infix expressions are enclosed in curly brackets, and their contents are written in infix notation. In infix notation, operators are placed between their arguments. This makes some code easier to read as it is written in a more natural form. For example, “1 + 1” would be an example of infix notation. The “+”, “-“, “*”, “/”, “is”, “&lt;”, “>”, “not”, “and”, &amp; “or” functions can all be used in infix expressions. All operators are placed between their arguments in infix expressions except the “not” function, which is put before its argument.
+        \n\n
+        Below is an example of infix expressions. It is a simple program that gets a circle’s area from its radius, or distance from its center to its perimeter.
+    </string>
+    <string name="l10_p2_body1">
+        In infix expressions, arguments and operators must be separated by spaces. In addition, there is a set order that operations follow. Arithmetic is run first in this order of operations, and of the arithmetic functions, multiplication and division are done before addition and subtraction. Below is an example of this order of operations. This example prints 8, as “12 / 6” and “2 * 3” are done before the “+” function, so we will have “2 + 6” left over, and that is equal to 8.
+    </string>
+    <string name="l10_p2_body2">
+        After arithmetic is run, comparison operators (“is”, “&lt;”, and “>”) and performed, and after comparisons are complete, logical operators run as well. Below is an example of an if statement using comparison and logical operators in infix expressions.
+    </string>
+    <string name="l10_p2_body3">
+        In some scenarios, you might want to break the order of operations and do some things before others, such using one logical operator before using another, or adding and subtracting before multiplying or dividing. To do this, you can nest another infix expression inside an infix expression and have that one run first. Below is example of an infix expression that uses the “or” operator on comparisons having the “and” and “not” operations being performed on them.
+    </string>
+    <string name="l10_p2_body4">
+        Infix expressions are different from Superscript+’s normal parenthesized prefix notation, but some they can be easier to read. Whether or not you choose to use it is up to personal preference, though.
+        \n\n
+        Congratulations on completing the tenth course of Superscript+! I hope you learned something through these lessons, and I wish you luck on your future coding endeavors!
+    </string>
     <string name="lesson_1_name">Lesson 1 - Intro to Superscript+</string>
     <string name="lesson_2_name"><![CDATA[Lesson 2 - Data Types & Output]]></string>
     <string name="lesson_3_name"><![CDATA[Lesson 3 - Arithmetic & Nested Functions]]></string>
@@ -193,4 +231,303 @@
     <string name="lesson_10_name">Lesson 10 - Infix Expressions</string>
     <string name="superscript_plus_logo">Superscript Plus Logo</string>
     <string name="delete_project">Delete Project</string>
+    <string name="documentation">
+        <![CDATA[<div align="center"><b>SUPERSCRIPT+ DOCUMENTATION</b></div>
+<br>
+Superscript+ is a programming language that uses a parenthesized prefix notation. Its code is in the following structure:
+<br><br>
+> ([function] [argument 1] [argument 2] [argument ...])
+<br><br>
+Superscript+ has 3 data types: strings, numbers, and booleans.
+<br><br>
+Strings are enclosed in double quotations (ex. "Hello world!").
+<br>
+Numbers do not need quotes, and may consist of numerical values, decimals, and the negative sign (ex. -1.414).
+<br>
+Booleans do not need quotes either. Booleans are written in all lowercase (ex. false).
+<br><br>
+Superscript+ has 27 functions.
+<br><br>____________________<br><br>
+<b>prn</b> function
+<br><br>
+- Starts a new line and prints a string.
+<br><br>
+Usage: (prn [string])
+<br><br>
+> (prn "Hello world!")
+<br><br>
+<b>Hello world!</b>
+<br><br>____________________<br><br>
+<b>pr</b> function
+<br><br>
+- Prints a string
+<br><br>
+Usage: (pr [string])
+<br><br>
+> (pr "Hello world!")
+<br><br>
+<b>Hello world!</b>
+<br><br>____________________<br><br>
+<b>+</b> function
+<br><br>
+- Returns sum of 2+ numbers
+<br><br>
+Usage: (+ [number 1] [number 2] [number ...])
+<br><br>
+> (+ 5 4)
+<br><br>
+<b>9</b>
+<br><br>____________________<br><br>
+<b>-</b> function
+<br><br>
+- Returns total difference of numbers from minuend
+<br><br>
+Usage: (- [minuend] [subtrahend 1] [subtrahend ...])
+<br><br>
+> (- 5 4)
+<br><br>
+<b>1</b>
+<br><br>____________________<br><br>
+<b>*</b> function
+<br><br>
+- Returns product of 2+ numbers
+<br><br>
+Usage: (* [number 1] [number 2] [number ...])
+<br><br>
+> (* 6 3)
+<br><br>
+<b>18</b>
+<br><br>____________________<br><br>
+<b>/</b> function
+<br><br>
+- Returns total quotient of numbers from dividend
+<br><br>
+Usage: (/ [dividend] [divisor 1] [divisor ...])
+<br><br>
+> (/ 6 3)
+<br><br>
+<b>2</b>
+<br><br>____________________<br><br>
+<b>=</b> function
+<br><br>
+- Sets variable
+<br><br>
+Usage: (= [symbol] [value])
+<br><br>
+> (= number 10)
+<br><br>
+<b>...</b>
+<br><br>____________________<br><br>
+<b>exit</b> function
+<br><br>
+- Exits the program
+<br><br>
+Usage: (exit)
+<br><br>
+> (exit)
+<br><br>
+<b>...</b>
+<br><br>____________________<br><br>
+<b>is</b> function
+<br><br>
+- Returns boolean result of whether arguments are equal
+<br><br>
+Usage: (is [value 1] [value 2])
+<br><br>
+> (is 3 (+ 2 1))
+<br><br>
+<b>true</b>
+<br><br>____________________<br><br>
+<b>&lt;</b> function
+<br><br>
+- Returns boolean result of whether first argument is less than second argument
+<br><br>
+Usage: (&lt; [number 1] [number 2])
+<br><br>
+> (&lt; 0 1)
+<br><br>
+<b>true</b>
+<br><br>____________________<br><br>
+<b>></b> function
+<br><br>
+- Returns boolean result of whether first argument is greater than second argument
+<br><br>
+Usage: (> [number 1] [number 2])
+<br><br>
+> (> 4 3)
+<br><br>
+<b>true</b>
+<br><br>____________________<br><br>
+<b>if</b> function
+<br><br>
+- Runs second argument\'s code if first argument is true
+<br><br>
+Usage: (if [condition] [then] [else])
+<br><br>
+> (if (is 5 (+ 2 3)) (prn "2 + 3 = 5") (prn "2 + 3 not = 5"))
+<br><br>
+<b>2 + 3 = 5</b>
+<br><br>____________________<br><br>
+<b>do</b> function
+<br><br>
+- Runs each of its arguments
+<br><br>
+Usage: (do [function 1] [function ...])
+<br><br>
+> (do (pr "Hello ") (prn "world!"))
+<br><br>
+<b>Hello world!</b>
+<br><br>____________________<br><br>
+<b>while</b> function
+<br><br>
+- Iterates through second argument while first argument is true
+<br><br>
+Usage: (while [condition] [do])
+<br><br>
+> (= i 0)<br>
+> (while (&lt; i 3) (do (prn i) (= i (+ i 1))))
+<br><br>
+<b>
+  0<br>
+  1<br>
+  2
+</b>
+<br><br>____________________<br><br>
+<b>read</b> function
+<br><br>
+- Reads user input
+<br><br>
+Usage: (read [prompt])
+<br><br>
+> (read)
+<br><br>
+<b>...</b>
+<br><br>____________________<br><br>
+<b>repeat</b> function
+<br><br>
+- Repeats second argument for amount of times of first argument
+<br><br>
+Usage: (repeat [times] [do])
+<br><br>
+> (= i 0)<br>
+> (repeat 3 (do (prn i) (= i (+ i 1))))
+<br><br>
+<b>
+  0<br>
+  1<br>
+  2
+</b>
+<br><br>____________________<br><br>
+<b>concat</b> function
+<br><br>
+- Returns concatenation of arguments
+<br><br>
+Usage: (concat [string 1] [string 2] [string ...])
+<br><br>
+> (concat "Hello " "world!")
+<br><br>
+<b>Hello world!</b>
+<br><br>____________________<br><br>
+<b>lower</b> function
+<br><br>
+- Returns argument in lowercase
+<br><br>
+Usage: (lower [string])
+<br><br>
+> (lower "Hello world!")
+<br><br>
+<b>hello world!</b>
+<br><br>____________________<br><br>
+<b>upper</b> function
+<br><br>
+- Returns argument in uppercase
+<br><br>
+Usage: (upper [string])
+<br><br>
+> (upper "Hello world!")
+<br><br>
+<b>HELLO WORLD!</b>
+<br><br>____________________<br><br>
+<b>length</b> function
+<br><br>
+- Returns string length
+<br><br>
+Usage: (length [string])
+<br><br>
+> (length "Hello world!")
+<br><br>
+<b>12</b>
+<br><br>____________________<br><br>
+<b>char_at</b> function
+<br><br>
+- Returns character at index in string
+<br><br>
+Usage: (char_at [string] [character])
+<br><br>
+> (char_at "Hello world" 0)
+<br><br>
+<b>H</b>
+<br><br>____________________<br><br>
+<b>substr</b> function
+<br><br>
+- Returns substring of string starting at index (inclusive) and ending at index (exclusive & optional)
+<br><br>
+Usage: (substr [string] [start] [end])
+<br><br>
+> (substr "Hello world!" 6 11)
+<br><br>
+<b>world</b>
+<br><br>____________________<br><br>
+<b>sleep</b> function
+<br><br>
+- Pauses program for given milliseconds
+<br><br>
+Usage: (sleep [milliseconds])
+<br><br>
+> (sleep 1000)
+<br><br>
+<b>...</b>
+<br><br>____________________<br><br>
+<b>not</b> function
+<br><br>
+- Returns inverted boolean
+<br><br>
+Usage: (not [boolean])
+<br><br>
+> (not true)
+<br><br>
+<b>false</b>
+<br><br>____________________<br><br>
+<b>and</b> function
+<br><br>
+- Returns boolean result of logical AND operation performed on arguments
+<br><br>
+Usage: (and [boolean 1] [boolean 2] [boolean ...])
+<br><br>
+> (and (is 1 1) (is 2 3))
+<br><br>
+<b>false</b>
+<br><br>____________________<br><br>
+<b>or</b> function
+<br><br>
+- Returns boolean result of logical OR operation performed on arguments
+<br><br>
+Usage: (or [boolean 1] [boolean 2] [boolean ...])
+<br><br>
+> (or (is 1 1) (is 2 3))
+<br><br>
+<b>true</b>
+<br><br>____________________<br><br>
+<b>rand</b> function
+<br><br>
+- Returns a random integer from first argument to second argument (both inclusive)
+<br><br>
+Usage: (rand [number 1] [number 2])
+<br><br>
+> (rand 1 10)
+<br><br>
+<b>6</b>
+<br><br>____________________<br><br>
+]]>
+    </string>
 </resources>

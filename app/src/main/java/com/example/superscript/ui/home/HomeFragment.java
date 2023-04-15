@@ -23,8 +23,6 @@ import com.example.superscript.R;
  */
 public class HomeFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -42,6 +40,8 @@ public class HomeFragment extends Fragment {
     private Button lesson6;
     private Button lesson7;
     private Button lesson8;
+    private Button lesson9;
+    private Button lesson10;
 
     public static HomeFragment newInstance(String param1, String param2) {
         HomeFragment fragment = new HomeFragment();
@@ -117,6 +117,20 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 openLesson(8);
+            }
+        });
+        lesson9 = lessonListLayout.findViewById(R.id.lesson9);
+        lesson9.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openLesson(9);
+            }
+        });
+        lesson10 = lessonListLayout.findViewById(R.id.lesson10);
+        lesson10.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openLesson(10);
             }
         });
 

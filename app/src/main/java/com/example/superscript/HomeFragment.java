@@ -45,8 +45,6 @@ public class HomeFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.d("HomeFragment", "Button setOnClickListener() called");
-
     }
 
     @Override
@@ -62,14 +60,11 @@ public class HomeFragment extends Fragment {
                 openLesson(1);
             }
         });
-        Log.d("HomeFragment", "Button setOnClickListener() called");
-        System.out.println("INNNNNN");
 
         return view;
     }
 
     public void openLesson(int lessonNum){
-        Log.d("HomeFragment", "Opening lesson " + lessonNum);
         Intent intent = new Intent(getActivity(), LessonActivity.class);
         intent.putExtra("lesson", String.valueOf(lessonNum));
         startActivity(intent);

@@ -428,8 +428,8 @@ public class SSP {
       // while function
       else if (exec.function.equals("while")) {
         if (exec.args.size() == 2) {
-          while ((!vars.containsKey(exec.args.get(0))) ? execute(compile(exec.args.get(0))).get(0).result.equals("true")
-              : vars.get(exec.args.get(0)).equals("true")) {
+          while ((!vars.containsKey(exec.args.get(0))) ? ((!exec.args.get(0).equals("true") && !exec.args.get(0).equals("false")) ?execute(compile(exec.args.get(0))).get(0).result.equals("true") : exec.args.get(0).equals("true"))
+                  : vars.get(exec.args.get(0)).equals("true")) {
             execute(compile(exec.args.get(1)));
           }
         }
@@ -674,7 +674,7 @@ public class SSP {
       }
 
       // or function
-      else if(exec.function.equals("or")){
+      else if (exec.function.equals("or")){
         if(exec.args.size() > 1){
           Boolean result = false;
           for(Integer i = 0; i < exec.args.size(); i++){
@@ -696,18 +696,71 @@ public class SSP {
       }
 
       // rand function
-      else if(exec.function.equals("rand")){
+      else if (exec.function.equals("rand")){
         if(exec.args.size() == 2){
           try{
             res.result = String.valueOf((int)(Math.random() * Float.parseFloat(exec.args.get(1)) + Float.parseFloat(exec.args.get(0))));
           }
           catch(NumberFormatException e){
-            output.setText(output.getText().toString() + "\n" +"Error: Function " + exec.function + " cannot convert non-numeric value to number");
+            output.setText(output.getText().toString() + "\n" + "Error: Function " + exec.function + " cannot convert non-numeric value to number");
           }
           results.add(res);
         }
         else{
-          output.setText(output.getText().toString() + "\n" +"Error: Invalid number of arguments given for function " + exec.function + ".");
+          output.setText(output.getText().toString() + "\n" + "Error: Invalid number of arguments given for function " + exec.function + ".");
+          return new ArrayList<Function>();
+        }
+      }
+
+      // length function
+      else if (exec.function.equals("length")){
+        if(exec.args.size() == 1){
+          res.result = String.valueOf(exec.args.get(0).length());
+          results.add(res);
+        }
+      }
+
+      // char_at function
+      else if (exec.function.equals("char_at")){
+        if(exec.args.size() == 2){
+          try{
+            res.result = String.valueOf(exec.args.get(0).charAt(Integer.parseInt(exec.args.get(1))));
+          }
+          catch(StringIndexOutOfBoundsException e){
+            output.setText(output.getText().toString() + "\n" + "Error: String index out of bounds");
+            return new ArrayList<Function>();
+          }
+          catch(NumberFormatException e){
+            output.setText(output.getText().toString() + "\n" + "Error: Function " + exec.function + " cannot convert non-numeric value to number");
+            return new ArrayList<Function>();
+          }
+          results.add(res);
+        }
+        else{
+          output.setText(output.getText().toString() + "\n" + "Error: Invalid number of arguments given for function " + exec.function + ".");
+          return new ArrayList<Function>();
+        }
+      }
+
+      // substr function
+      else if (exec.function.equals("substr")){
+        if(exec.args.size() == 2 || exec.args.size() == 3){
+          try{
+            if(exec.args.size() == 2) res.result = exec.args.get(0).substring(Integer.parseInt(exec.args.get(1)));
+            else res.result = exec.args.get(0).substring(Integer.parseInt(exec.args.get(1)), Integer.parseInt(exec.args.get(2)));
+          }
+          catch(StringIndexOutOfBoundsException e){
+            output.setText(output.getText().toString() + "\n" + "Error: String index out of bounds");
+            return new ArrayList<Function>();
+          }
+          catch(NumberFormatException e){
+            output.setText(output.getText().toString() + "\n" + "Error: Function " + exec.function + " cannot convert non-numeric value to number");
+            return new ArrayList<Function>();
+          }
+          results.add(res);
+        }
+        else{
+          output.setText(output.getText().toString() + "\n" + "Error: Invalid number of arguments given for function " + exec.function + ".");
           return new ArrayList<Function>();
         }
       }

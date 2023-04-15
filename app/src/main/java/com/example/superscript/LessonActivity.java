@@ -593,6 +593,126 @@ public class LessonActivity extends AppCompatActivity {
                 exitLesson();
             }
         }
+        else if(lessonNum == 9){
+            if(pageNum == 1){
+                TextView body1 = new TextView(this);
+                body1.setText(getString(R.string.l9_p1_body1));
+                layout(body1);
+                lessonLayout.addView(body1);
+
+                TextView code1 = new TextView(this);
+                code1.setText("(= number 0)\n(while (< number 10) (prn number))");
+                code1.setBackgroundColor(getColor(R.color.background_grey));
+                code1.setTextColor(getColor(R.color.lime));
+                layout(code1);
+                lessonLayout.addView(code1);
+
+                TextView body2 = new TextView(this);
+                body2.setText(getString(R.string.l9_p1_body2));
+                layout(body2);
+                lessonLayout.addView(body2);
+
+                TextView code2 = new TextView(this);
+                code2.setText("(while (not (is (read “What is 2 + 2?”) 4)) (do (prn “That is incorrect!”) (sleep 3000)))\n(prn “That is correct!”)");
+                code2.setBackgroundColor(getColor(R.color.background_grey));
+                code2.setTextColor(getColor(R.color.lime));
+                layout(code2);
+                lessonLayout.addView(code2);
+            }
+            else if(pageNum == 2){
+                TextView body1 = new TextView(this);
+                body1.setText(getString(R.string.l9_p2_body1));
+                layout(body1);
+                lessonLayout.addView(body1);
+
+                TextView code1 = new TextView(this);
+                code1.setText("(= number 1)\n(repeat 100 (do (prn number) (= number (+ number 1))");
+                code1.setBackgroundColor(getColor(R.color.background_grey));
+                code1.setTextColor(getColor(R.color.lime));
+                layout(code1);
+                lessonLayout.addView(code1);
+
+                TextView body2 = new TextView(this);
+                body2.setText(getString(R.string.l9_p2_body2));
+                layout(body2);
+                lessonLayout.addView(body2);
+
+                TextView code2 = new TextView(this);
+                code2.setText("(= characters \"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789?!$&@%^_-\")\n(= password \"\")\n(repeat 10 (= password (concat password (char_at characters (rand 0 (- (length characters) 1))))))\n(pr \"Your randomly generated password is: \")\n(prn password)\n");
+                code2.setBackgroundColor(getColor(R.color.background_grey));
+                code2.setTextColor(getColor(R.color.lime));
+                layout(code2);
+                lessonLayout.addView(code2);
+
+                TextView body3 = new TextView(this);
+                body3.setText(getString(R.string.l9_p2_body3));
+                layout(body3);
+                lessonLayout.addView(body3);
+            }
+            else{
+                exitLesson();
+            }
+        }
+        else if(lessonNum == 10){
+            if(pageNum == 1){
+                TextView body1 = new TextView(this);
+                body1.setText(getString(R.string.l10_p1_body1));
+                layout(body1);
+                lessonLayout.addView(body1);
+
+                TextView code1 = new TextView(this);
+                code1.setText("(= radius (read “Enter the length of the radius of a circle. ”))\n(= area {3.14 * radius * radius})\n(prn (concat “The area of a circle with a radius of ” radius “ is “ area))\n");
+                code1.setBackgroundColor(getColor(R.color.background_grey));
+                code1.setTextColor(getColor(R.color.lime));
+                layout(code1);
+                lessonLayout.addView(code1);
+            }
+            else if(pageNum == 2){
+                TextView body1 = new TextView(this);
+                body1.setText(getString(R.string.l10_p2_body1));
+                layout(body1);
+                lessonLayout.addView(body1);
+
+                TextView code1 = new TextView(this);
+                code1.setText("(prn {12 / 6 + 2 * 3})");
+                code1.setBackgroundColor(getColor(R.color.background_grey));
+                code1.setTextColor(getColor(R.color.lime));
+                layout(code1);
+                lessonLayout.addView(code1);
+
+                TextView body2 = new TextView(this);
+                body2.setText(getString(R.string.l10_p2_body2));
+                layout(body2);
+                lessonLayout.addView(body2);
+
+                TextView code2 = new TextView(this);
+                code2.setText("(if {2 * 2 is 4 and 8 / 2 is 4} (prn “2 * 2 is 4 and 8 / 2 is 4!”))");
+                code2.setBackgroundColor(getColor(R.color.background_grey));
+                code2.setTextColor(getColor(R.color.lime));
+                layout(code2);
+                lessonLayout.addView(code2);
+
+                TextView body3 = new TextView(this);
+                body3.setText(getString(R.string.l10_p2_body3));
+                layout(body3);
+                lessonLayout.addView(body3);
+
+                TextView code3 = new TextView(this);
+                code3.setText("(= number 1)\n(if {{{not 5 is 9} and {not 4 is 3}} or {0 is 0 and 9 is number}} (prn “Either 5 is not 9 and 4 is not 3, or 0 is 0 and 9 is the variable number.”))");
+                code3.setBackgroundColor(getColor(R.color.background_grey));
+                code3.setTextColor(getColor(R.color.lime));
+                layout(code3);
+                lessonLayout.addView(code3);
+
+                TextView body4 = new TextView(this);
+                body4.setText(getString(R.string.l10_p2_body4));
+                layout(body4);
+                lessonLayout.addView(body4);
+            }
+            else{
+                exitLesson();
+            }
+        }
         else{
             exitLesson();
         }
@@ -605,6 +725,7 @@ public class LessonActivity extends AppCompatActivity {
         );
         layoutParams.setMargins(20, 20, 20, 20);
         textview.setPadding(56, ((!textview.getText().toString().trim().startsWith("(")) ? 24 : 0), 56, ((!textview.getText().toString().trim().startsWith("(")) ? 24 : 0));
+        textview.setTextSize(16);
     }
 
     public void exitLesson(){

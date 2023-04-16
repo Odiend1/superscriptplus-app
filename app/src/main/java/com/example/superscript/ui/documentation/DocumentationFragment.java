@@ -9,6 +9,7 @@ import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.superscript.R;
@@ -57,6 +58,13 @@ public class DocumentationFragment extends Fragment {
         } else {
             documentation.setText(Html.fromHtml(getString(R.string.documentation)));
         }
+
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.FILL_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+        );
+        layoutParams.setMargins(20, 20, 20, 20);
+        documentation.setPadding(56, ((!documentation.getText().toString().trim().startsWith("(")) ? 24 : 0), 56, ((!documentation.getText().toString().trim().startsWith("(")) ? 24 : 0));
 
         return view;
     }

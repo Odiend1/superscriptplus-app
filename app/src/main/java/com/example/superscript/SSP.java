@@ -258,7 +258,7 @@ public class SSP {
       if(operation.equals("-") || operation.equals("/")) finalNum = Float.parseFloat(args.get(0));
     }
     catch(NumberFormatException e){
-      System.out.println("Error: Function " + operation + " cannot convert non-numeric value to number");
+      output.setText(output.getText().toString() + "\n" + "Error: Function " + operation + " cannot convert non-numeric value to number");
       return null;
     }
 
@@ -266,7 +266,7 @@ public class SSP {
       for (int i = (operation.equals("+") || operation.equals("*")) ? 0 : 1; i < args.size(); i++) {
         try {
           if (Float.parseFloat(args.get(i)) == 0f && operation.equals("/")) {
-            System.out.println("Error: Cannot divide by zero");
+            output.setText(output.getText().toString() + "\n" + "Error: Cannot divide by zero");
             return null;
           }
           switch(operation){
@@ -284,12 +284,12 @@ public class SSP {
               break;
           }
         } catch (NumberFormatException e) {
-          System.out.println("Error: Function " + operation + " cannot convert non-numeric value to number");
+          output.setText(output.getText().toString() + "\n" + "Error: Function " + operation + " cannot convert non-numeric value to number");
           return null;
         }
       }
     } else {
-      System.out.println("Error: Invalid number of arguments given for function " + operation + ".");
+      output.setText(output.getText().toString() + "\n" + "Error: Invalid number of arguments given for function " + operation + ".");
       return null;
     }
 
@@ -482,6 +482,7 @@ public class SSP {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                   res.result = inputEditText.getText().toString();
+                  dialog.dismiss();
                 }
               });
               builder.setCancelable(false);
@@ -635,7 +636,7 @@ public class SSP {
             }
             arg1 = new StringBuilder(arg1).reverse().toString();
             if(!validData(arg1)){
-              System.out.println("Error: Invalid symbol " + arg1);
+              output.setText(output.getText().toString() + "\n" + "Error: Invalid symbol " + arg1);
               return new ArrayList<Function
 ( ;           }
             int rStart = (j != 0) ? j + 1 : j;
@@ -651,7 +652,7 @@ public class SSP {
             ex = ex.substring(0, rStart) + String.valueOf((infixChar.equals('i') ? arg1.equals(arg2) : infixChar.equals('<') ? Float.parseFloat(arg1) < Float.parseFloat(arg2) : Float.parseFloat(arg1) > Float.parseFloat(arg2))) + ex.substring(rEnd);
           }
             catch(NumberFormatException e){
-              System.out.println("Error: Infix expression cannot convert non-numeric value to number");
+              output.setText(output.getText().toString() + "\n" + "Error: Infix expression cannot convert non-numeric value to number");
               return new ArrayList<Function
 ( ;           }
             i = rStart;
@@ -662,7 +663,7 @@ public class SSP {
         }
         catch(NumberFormatException e){
           if(!(ex.equals("true") || ex.equals("false"))){
-            System.out.println("Error: Infix expression cannot convert non-numeric value to number");
+            output.setText(output.getText().toString() + "\n" + "Error: Infix expression cannot convert non-numeric value to number");
             return new ArrayList<Function>();
           }
         }
@@ -804,7 +805,43 @@ public class SSP {
           return new ArrayList<Function>();
         }
       }
+      // max function
+      else if (exec.function.equals("max")) {
+        if (exec.args.size() > 1) {
+          try {
+            res.result = exec.args.get(0);
+            for (Integer i = 1; i < exec.args.size(); i++) {
+              res.result = String.valueOf(Math.max(Float.parseFloat(res.result), Float.parseFloat(exec.args.get(i))));
+            }
+          } catch (NumberFormatException e) {
+            output.setText(output.getText().toString() + "\n" + "Error: Function " + exec.function + " cannot convert non-numeric value to number");
+            return new ArrayList<Function>();
+          }
+          res.result = (res.result.endsWith(".0"))
+                  ? res.result.substring(0, res.result.length() - 2)
+                  : res.result;
+          results.add(res);
+        }
+      }
 
+      // min function
+      else if (exec.function.equals("min")) {
+          if (exec.args.size() > 1) {
+            try {
+              res.result = exec.args.get(0);
+              for (Integer i = 1; i < exec.args.size(); i++) {
+                res.result = String.valueOf(Math.min(Float.parseFloat(res.result), Float.parseFloat(exec.args.get(i))));
+              }
+            } catch (NumberFormatException e) {
+              output.setText(output.getText().toString() + "\n" + "Error: Function " + exec.function + " cannot convert non-numeric value to number");
+              return new ArrayList<Function>();
+            }
+            res.result = (res.result.endsWith(".0"))
+                    ? res.result.substring(0, res.result.length() - 2)
+                    : res.result;
+            results.add(res);
+          }
+        }
       else {
         output.setText(output.getText().toString() + "\n" + "Error: Undefined function " + exec.function);
         return new ArrayList<Function>();

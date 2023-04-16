@@ -247,7 +247,7 @@ Numbers do not need quotes, and may consist of numberical values, decimals, and 
 Booleans do not need quotes either. Booleans are written in all lowercase (ex. false).
 <br><br>
 <b>II.</b> Superscript+ has 27 functions.
-<br><br>____________________<br><br>
+<br><br>________________________________________<br><br>
 <b>prn</b> function
 <br><br>
 - Starts a new line and prints a string.
@@ -257,7 +257,7 @@ Usage: (prn [string])
 > (prn "Hello world!")
 <br><br>
 <b>Hello world!</b>
-<br><br>____________________<br><br>
+<br><br>________________________________________<br><br>
 <b>pr</b> function
 <br><br>
 - Prints a string
@@ -267,7 +267,7 @@ Usage: (pr [string])
 > (pr "Hello world!")
 <br><br>
 <b>Hello world!</b>
-<br><br>____________________<br><br>
+<br><br>________________________________________<br><br>
 <b>+</b> function
 <br><br>
 - Returns sum of 2+ numbers
@@ -277,7 +277,7 @@ Usage: (+ [number 1] [number 2] [number ...])
 > (+ 5 4)
 <br><br>
 <b>9</b>
-<br><br>____________________<br><br>
+<br><br>________________________________________<br><br>
 <b>-</b> function
 <br><br>
 - Returns total difference of numbers from minuend
@@ -287,7 +287,7 @@ Usage: (- [minuend] [subtrahend 1] [subtrahend ...])
 > (- 5 4)
 <br><br>
 <b>1</b>
-<br><br>____________________<br><br>
+<br><br>________________________________________<br><br>
 <b>*</b> function
 <br><br>
 - Returns product of 2+ numbers
@@ -297,7 +297,7 @@ Usage: (* [number 1] [number 2] [number ...])
 > (* 6 3)
 <br><br>
 <b>18</b>
-<br><br>____________________<br><br>
+<br><br>________________________________________<br><br>
 <b>/</b> function
 <br><br>
 - Returns total quotient of numbers from dividend
@@ -307,7 +307,7 @@ Usage: (/ [dividend] [divisor 1] [divisor ...])
 > (/ 6 3)
 <br><br>
 <b>2</b>
-<br><br>____________________<br><br>
+<br><br>________________________________________<br><br>
 <b>=</b> function
 <br><br>
 - Sets variable
@@ -317,7 +317,7 @@ Usage: (= [symbol] [value])
 > (= number 10)
 <br><br>
 <b>...</b>
-<br><br>____________________<br><br>
+<br><br>________________________________________<br><br>
 <b>exit</b> function
 <br><br>
 - Exits the program
@@ -327,7 +327,7 @@ Usage: (exit)
 > (exit)
 <br><br>
 <b>...</b>
-<br><br>____________________<br><br>
+<br><br>________________________________________<br><br>
 <b>is</b> function
 <br><br>
 - Returns boolean result of whether arguments are equal
@@ -337,7 +337,7 @@ Usage: (is [value 1] [value 2])
 > (is 3 (+ 2 1))
 <br><br>
 <b>true</b>
-<br><br>____________________<br><br>
+<br><br>________________________________________<br><br>
 <b>&lt;</b> function
 <br><br>
 - Returns boolean result of whether first argument is less than second argument
@@ -347,7 +347,7 @@ Usage: (&lt; [number 1] [number 2])
 > (&lt; 0 1)
 <br><br>
 <b>true</b>
-<br><br>____________________<br><br>
+<br><br>________________________________________<br><br>
 <b>></b> function
 <br><br>
 - Returns boolean result of whether first argument is greather than second argument
@@ -357,7 +357,7 @@ Usage: (> [number 1] [number 2])
 > (> 4 3)
 <br><br>
 <b>true</b>
-<br><br>____________________<br><br>
+<br><br>________________________________________<br><br>
 <b>if</b> function
 <br><br>
 - Runs second argument\'s code if first argument is true
@@ -367,7 +367,7 @@ Usage: (if [condition] [then] [else])
 > (if (is 5 (+ 2 3)) (prn "2 + 3 = 5") (prn "2 + 3 not = 5"))
 <br><br>
 <b>2 + 3 = 5</b>
-<br><br>____________________<br><br>
+<br><br>________________________________________<br><br>
 <b>do</b> function
 <br><br>
 - Runs each of its arguments
@@ -377,7 +377,7 @@ Usage: (do [function 1] [function ...])
 > (do (pr "Hello ") (prn "world!"))
 <br><br>
 <b>Hello world!</b>
-<br><br>____________________<br><br>
+<br><br>________________________________________<br><br>
 <b>while</b> function
 <br><br>
 - Iterates through second argument while first argument is true
@@ -392,7 +392,7 @@ Usage: (while [condition] [do])
   1<br>
   2
 </b>
-<br><br>____________________<br><br>
+<br><br>________________________________________<br><br>
 <b>read</b> function
 <br><br>
 - Reads user input
@@ -402,7 +402,7 @@ Usage: (read [prompt])
 > (read)
 <br><br>
 <b>...</b>
-<br><br>____________________<br><br>
+<br><br>________________________________________<br><br>
 <b>repeat</b> function
 <br><br>
 - Repeats second argument for amount of times of first argument
@@ -417,7 +417,7 @@ Usage: (repeat [times] [do])
   1<br>
   2
 </b>
-<br><br>____________________<br><br>
+<br><br>________________________________________<br><br>
 <b>concat</b> function
 <br><br>
 - Returns concatenation of arguments
@@ -427,7 +427,7 @@ Usage: (concat [string 1] [string 2] [string ...])
 > (concat "Hello " "world!")
 <br><br>
 <b>Hello world!</b>
-<br><br>____________________<br><br>
+<br><br>________________________________________<br><br>
 <b>lower</b> function
 <br><br>
 - Returns argument in lowercase
@@ -437,7 +437,7 @@ Usage: (lower [string])
 > (lower "Hello world!")
 <br><br>
 <b>hello world!</b>
-<br><br>____________________<br><br>
+<br><br>________________________________________<br><br>
 <b>upper</b> function
 <br><br>
 - Returns argument in uppercase
@@ -447,7 +447,7 @@ Usage: (upper [string])
 > (upper "Hello world!")
 <br><br>
 <b>HELLO WORLD!</b>
-<br><br>____________________<br><br>
+<br><br>________________________________________<br><br>
 <b>length</b> function
 <br><br>
 - Returns string length
@@ -457,7 +457,7 @@ Usage: (length [string])
 > (length "Hello world!")
 <br><br>
 <b>12</b>
-<br><br>____________________<br><br>
+<br><br>________________________________________<br><br>
 <b>char_at</b> function
 <br><br>
 - Returns character at index in string
@@ -467,7 +467,7 @@ Usage: (char_at [string] [character])
 > (char_at "Hello world" 0)
 <br><br>
 <b>H</b>
-<br><br>____________________<br><br>
+<br><br>________________________________________<br><br>
 <b>substr</b> function
 <br><br>
 - Returns substring of string starting at index (inclusive) and ending at index (exclusive & optional)
@@ -477,7 +477,7 @@ Usage: (substr [string] [start] [end])
 > (substr "Hello world!" 6 11)
 <br><br>
 <b>world</b>
-<br><br>____________________<br><br>
+<br><br>________________________________________<br><br>
 <b>sleep</b> function
 <br><br>
 - Pauses program for given milliseconds
@@ -487,7 +487,7 @@ Usage: (sleep [milliseconds])
 > (sleep 1000)
 <br><br>
 <b>...</b>
-<br><br>____________________<br><br>
+<br><br>________________________________________<br><br>
 <b>not</b> function
 <br><br>
 - Returns inverted boolean
@@ -497,7 +497,7 @@ Usage: (not [boolean])
 > (not true)
 <br><br>
 <b>false</b>
-<br><br>____________________<br><br>
+<br><br>________________________________________<br><br>
 <b>and</b> function
 <br><br>
 - Returns boolean result of logical AND operation performed on arguments
@@ -507,7 +507,7 @@ Usage: (and [boolean 1] [boolean 2] [boolean ...])
 > (and (is 1 1) (is 2 3))
 <br><br>
 <b>false</b>
-<br><br>____________________<br><br>
+<br><br>________________________________________<br><br>
 <b>or</b> function
 <br><br>
 - Returns boolean result of logical OR operation performed on arguments
@@ -517,7 +517,7 @@ Usage: (or [boolean 1] [boolean 2] [boolean ...])
 > (or (is 1 1) (is 2 3))
 <br><br>
 <b>true</b>
-<br><br>____________________<br><br>
+<br><br>________________________________________<br><br>
 <b>rand</b> function
 <br><br>
 - Returns a random integer from first argument to second argument (both inclusive)
@@ -527,7 +527,27 @@ Usage: (rand [number 1] [number 2])
 > (rand 1 10)
 <br><br>
 <b>6</b>
-<br><br>____________________<br>
+<br><br>________________________________________<br><br>
+<b>max</b> function
+<br><br>
+- Returns the argument with the largest value
+<br><br>
+Usage: (max [number 1] [number 2] [number ...])
+<br><br>
+> (max 4.4 7.1)
+<br><br>
+<b>7.1</b>
+<br><br>________________________________________<br><br>
+<b>min</b> function
+<br><br>
+- Returns the argument with the smallest value
+<br><br>
+Usage: (min [number 1] [number 2] [number ...])
+<br><br>
+> (min 4.4 7.1)
+<br><br>
+<b>4.4</b>
+<br><br>________________________________________<br>
 <b>III. </b>Superscript+ can perform arithmetic in infix notation in expressions called infix expressions. Follows order of operations. Infix expressions can be nested in other infix expressions.
 <br><br>
 Usage: {[argument 1] [operator] [argument 2]}
@@ -536,6 +556,6 @@ Usage: {[argument 1] [operator] [argument 2]}
 <br><br>
 <b>11</b>
 <br><br>
-____________________]]>
+________________________________________]]>
     </string>
 </resources>
